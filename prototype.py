@@ -7,8 +7,20 @@ print(notes)
 trans = []
 
 for i in notes:
-	if i == C:
+	if i == "C":
 		trans.append(1)
+	if i == "D":
+		trans.append(2)
+	if i == "E":
+		trans.append(3)
+	if i == "F":
+		trans.append(4)
+	if i == "G":
+		trans.append(5)
+	if i == "A":
+		trans.append(6)
+	if i == "H":
+		trans.append(7)
 
 print(trans)
 
