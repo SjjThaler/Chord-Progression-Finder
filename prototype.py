@@ -4,6 +4,7 @@ notes = input("Please give your notes in format: xyz ")
 notes = notes.upper()
 print(notes)
 
+# Listenlösung
 trans = []
 
 for i in notes:
@@ -23,6 +24,22 @@ for i in notes:
 		trans.append(7)
 
 print(trans)
+
+# Dictionary Lösung
+notdict = {
+	"C": 1,
+	"D": 2,
+	"E": 3,
+	"F": 4,
+	"G": 5,
+	"A": 6,
+	"B": 7,
+}
+
+for x in notes:
+	print(notdict[x])
+
+
 
 # Chord Calculation
 	# Hier müsste ein Algorithmus hin, welcher Noten in Nummern umwandelt
