@@ -1,3 +1,5 @@
+from timeit import default_timer as timer
+
 # Notes Input (idealerweise später über Django)
 	# Hier irgendwie mehrere Chords? Nicht nur einen oder?
 notes = input("Please give your notes in format: xyz ")
@@ -5,6 +7,8 @@ notes = notes.upper()
 print(notes)
 
 # Listenlösung
+lstart = timer()
+
 trans = []
 
 for i in notes:
@@ -20,12 +24,16 @@ for i in notes:
 		trans.append(5)
 	if i == "A":
 		trans.append(6)
-	if i == "H":
+	if i == "B":
 		trans.append(7)
 
 print(trans)
+lend = timer()
+print("Listentime = ", lend-lstart)
 
 # Dictionary Lösung
+dstart = timer()
+
 notdict = {
 	"C": 1,
 	"D": 2,
@@ -39,7 +47,8 @@ notdict = {
 for x in notes:
 	print(notdict[x])
 
-
+dend = timer()
+print("Dictionary time = ", dend-dstart)
 
 # Chord Calculation
 	# Hier müsste ein Algorithmus hin, welcher Noten in Nummern umwandelt
