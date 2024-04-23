@@ -32,5 +32,3 @@ print(trans)
 # Chord Progression Calculation
 	# Hier müsste ein Algorithmus hin, welcher Akkorde in Skalen einordnet und darüber hinaus
 	# wohl auch Spezialbeziehungen erkennt (Secondary Dominant, Tritonus Substitution)
-
-input("Please press any key to close the application.")
