@@ -34,6 +34,7 @@ print("Listentime = ", lend-lstart)
 # Dictionary Lösung
 dstart = timer()
 
+dictlist = []
 notdict = {
 	"C": 1,
 	"D": 2,
@@ -45,15 +46,26 @@ notdict = {
 }
 
 for x in notes:
-	print(notdict[x])
+	dictlist.append(notdict[x])
 
 dend = timer()
 print("Dictionary time = ", dend-dstart)
 
 # Chord Calculation
-	# Hier müsste ein Algorithmus hin, welcher Noten in Nummern umwandelt
-	# und in Terzen auftürmt
+	# Hier müsste ein Algorithmus hin, welcher Noten in Terzen auftürmt und dann den Chord bestimmt
 
+def chord_calc():
+	dictlist.sort()
+	for i in dictlist:
+		x = dictlist[i]
+		y = dictlist[i+3]
+		print("x =",x)
+		print("y =",y)
+		if x - y == 3:
+			print("6,3")
+
+
+chord_calc()
 
 # Chord Progression Calculation
 	# Hier müsste ein Algorithmus hin, welcher Akkorde in Skalen einordnet und darüber hinaus
