@@ -1,4 +1,4 @@
-from timeit import default_timer as timer
+
 
 # Notes Input (idealerweise später über Django)
 	# Hier irgendwie mehrere Chords? Nicht nur einen oder?
@@ -35,4 +35,4 @@ def intervall (n1, n2):
 
     return note2-note1
 
-print(intervall("c", "g"))
+print(intervall(n1, n2))
