@@ -49,8 +49,11 @@ chord_calc()
 	# wohl auch Spezialbeziehungen erkennt (Secondary Dominant, Tritonus Substitution)
 
 notes = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
-note1 = notes.index("dis")
-note2 = notes.index("fis")
+note1 = notes.index("fis")
+note2 = notes.index("dis")
+
+if note1 > note2:
+    note2+=12
 
 intervall = note2-note1
 
