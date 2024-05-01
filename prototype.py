@@ -41,13 +41,14 @@ chord_calc()
 	# Hier müsste ein Algorithmus hin, welcher Akkorde in Skalen einordnet und darüber hinaus
 	# wohl auch Spezialbeziehungen erkennt (Secondary Dominant, Tritonus Substitution)
 
-notes = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
-note1 = notes.index("fis")
-note2 = notes.index("dis")
+def intervall (n1, n2):
+    notes = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
+    note1 = notes.index(n1)
+    note2 = notes.index(n2)
 
-if note1 > note2:
-    note2+=12
+    if note1 > note2:
+        note2+=12
 
-intervall = note2-note1
+    return note2-note1
 
-print(intervall)
+print(intervall("c", "g"))
