@@ -47,3 +47,6 @@ chord_calc()
 # Chord Progression Calculation
 	# Hier müsste ein Algorithmus hin, welcher Akkorde in Skalen einordnet und darüber hinaus
 	# wohl auch Spezialbeziehungen erkennt (Secondary Dominant, Tritonus Substitution)
+
+notes = ["c", "cis", "d", "dis", "e", "f", "fis", "g", "gis", "a", "ais", "b"]
+print(notes.index("dis"))
