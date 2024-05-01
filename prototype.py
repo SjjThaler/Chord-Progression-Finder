@@ -29,17 +29,10 @@ print("Dictionary time = ", dend-dstart)
 # Chord Calculation
 	# Hier müsste ein Algorithmus hin, welcher Noten in Terzen auftürmt und dann den Chord bestimmt
 	# Zurzeit völlig verwirrter Algorithmus
-def chord_calc():
+def interval_calc():
 	dictlist.sort()
-	for i in range(len(dictlist)):
-		x = dictlist[i]
-		y = dictlist[i-3]
-		print("x =",x)
-		print("y =",y)
-		z = y - x
-		print("z =",z)
-		if z == 3 or z == -5 or z == 2:
-			print("Terz")
+	n1 = dictlist.index(1)
+	n2 = dictlist.index(3)
 
 
 chord_calc()
