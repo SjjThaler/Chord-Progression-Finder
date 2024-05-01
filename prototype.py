@@ -2,8 +2,9 @@
 
 # Notes Input (idealerweise später über Django)
 	# Hier irgendwie mehrere Chords? Nicht nur einen oder?
-n1 = input("Gib N1 ein: ")
-n2 = input("Gib N2 ein: ")
+o1 = input("Gib N1 ein: ")
+o2 = input("Gib N2 ein: ")
+o3 = input("Gib N3 ein: ")
 
 def intervall (n1, n2):
     notdict = {
@@ -37,4 +38,6 @@ def intervall (n1, n2):
 
     return note2-note1
 
-print(intervall(n1, n2))
+print(intervall(o1,o2))
+print(intervall(o1,o3))
+print(intervall(o2,o3))
