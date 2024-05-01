@@ -31,11 +31,18 @@ print("Dictionary time = ", dend-dstart)
 	# Zurzeit völlig verwirrter Algorithmus
 def interval_calc():
 	dictlist.sort()
-	n1 = dictlist.index(1)
-	n2 = dictlist.index(3)
+	for i in range(len(dictlist)):
+		x = dictlist[i]
+		y = dictlist[i-3]
+		if x > y:
+			y += 12
+
+		z = x - y
+		print(z)
 
 
-chord_calc()
+
+interval_calc()
 
 # Chord Progression Calculation
 	# Hier müsste ein Algorithmus hin, welcher Akkorde in Skalen einordnet und darüber hinaus
