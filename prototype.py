@@ -34,30 +34,7 @@ notdict = {
 for x in notes:
 	dictlist.append(notdict[x])
 
-dend = timer()
-print("Dictionary time = ", dend-dstart)
 
-# Chord Calculation
-	# Hier müsste ein Algorithmus hin, welcher Noten in Terzen auftürmt und dann den Chord bestimmt
-	# Zurzeit völlig verwirrter Algorithmus
-def interval_calc():
-	dictlist.sort()
-	for i in range(len(dictlist)):
-		x = dictlist[i]
-		y = dictlist[i-3]
-		if x > y:
-			y += 12
-
-		z = x - y
-		print(z)
-
-
-
-interval_calc()
-
-# Chord Progression Calculation
-	# Hier müsste ein Algorithmus hin, welcher Akkorde in Skalen einordnet und darüber hinaus
-	# wohl auch Spezialbeziehungen erkennt (Secondary Dominant, Tritonus Substitution)
 
 def intervall (n1, n2):
     notdict = {
