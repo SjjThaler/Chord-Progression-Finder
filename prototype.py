@@ -6,31 +6,6 @@ notes = input("Please give your notes in format: xyz ")
 notes = notes.upper()
 print(notes)
 
-# Listenlösung
-lstart = timer()
-
-trans = []
-
-for i in notes:
-	if i == "C":
-		trans.append(1)
-	if i == "D":
-		trans.append(2)
-	if i == "E":
-		trans.append(3)
-	if i == "F":
-		trans.append(4)
-	if i == "G":
-		trans.append(5)
-	if i == "A":
-		trans.append(6)
-	if i == "B":
-		trans.append(7)
-
-print(trans)
-lend = timer()
-print("Listentime = ", lend-lstart)
-
 # Dictionary Lösung
 dstart = timer()
 
@@ -53,16 +28,18 @@ print("Dictionary time = ", dend-dstart)
 
 # Chord Calculation
 	# Hier müsste ein Algorithmus hin, welcher Noten in Terzen auftürmt und dann den Chord bestimmt
-
+	# Zurzeit völlig verwirrter Algorithmus
 def chord_calc():
 	dictlist.sort()
-	for i in dictlist:
+	for i in range(len(dictlist)):
 		x = dictlist[i]
-		y = dictlist[i+3]
+		y = dictlist[i-3]
 		print("x =",x)
 		print("y =",y)
-		if x - y == 3:
-			print("6,3")
+		z = y - x
+		print("z =",z)
+		if z == 3 or z == -5 or z == 2:
+			print("Terz")
 
 
 chord_calc()
