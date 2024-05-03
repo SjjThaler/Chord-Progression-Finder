@@ -15,7 +15,13 @@ while end == "X":
 	end = input("Continue X")
 
 print(progression)
+sharp = set()
+for sublist in progression:
+    for i in sublist:
+        if "#" in i:
+            sharp.add(i)
 
+print(sharp)
 
 def intervall (n1, n2):
     notdict = {

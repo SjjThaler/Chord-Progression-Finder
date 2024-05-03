@@ -16,6 +16,13 @@ while end == "y":
 
 print(progression)
 
+# Sharp counter
+sharp = set()
+for sublist in progression:
+    for i in sublist:
+        if "#" in i:
+            sharp.add(i)
+
 
 def intervall (n1, n2):
     notdict = {
