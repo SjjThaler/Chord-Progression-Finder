@@ -2,7 +2,7 @@ print("Chord indentifier\nStopp with X")
 notes = []
 note = ""
 progression = []
-end="X"
+end="y"
 while end == "X":
 	while note != "X":
 		note = input("Input notes (C#/Cb):").capitalize()
@@ -12,7 +12,7 @@ while end == "X":
 	progression.append(notes)
 	note = ""
 	notes = []
-	end = input("Continue X")
+	end = input("Continue y")
 
 print(progression)
 
