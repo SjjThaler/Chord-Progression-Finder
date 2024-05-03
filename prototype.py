@@ -21,7 +21,7 @@ sharp = set()
 flat = set()
 for sublist in progression:
     for i in sublist:
-        if "#" in i:
+        if "#" or "b" in i:
             sharp.add(i)
 		if "b" in i:
 			flat.add(i)
