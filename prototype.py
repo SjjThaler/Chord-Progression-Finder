@@ -20,11 +20,11 @@ print(progression)
 sharp = set()
 flat = set()
 for sublist in progression:
-    for i in sublist:
-        if "#" or "b" in i:
-            sharp.add(i)
-	if "b" in i:
-		flat.add(i)
+	for i in sublist:
+		if "#" or "b" in i:
+			sharp.add(i)
+		if "b" in i:
+			flat.add(i)
 # Analytic sharp counter?
 
 
