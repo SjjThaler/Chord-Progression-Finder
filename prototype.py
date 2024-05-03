@@ -49,7 +49,7 @@ print("Chord indentifier\nStopp with X")
 notes = []
 note = "y"
 while note != "X":
-	note = input("Input notes (C#/Cb):").upper()
+	note = input("Input notes (C#/Cb):").capitalize()
 	notes.append(note)
 
 
@@ -75,7 +75,8 @@ def intervall (n1, n2):
 	"A#":11,
 	"Bb":11,
 	"B":12,
-	"B#":1
+	"B#":1,
+	"Cb":12
 }
 
     note1 = notdict[n1]
