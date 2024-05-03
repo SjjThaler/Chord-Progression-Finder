@@ -21,10 +21,11 @@ sharp = set()
 flat = set()
 for sublist in progression:
 	for i in sublist:
-		if "#" or "b" in i:
+		if "#" in i:
 			sharp.add(i)
 		if "b" in i:
 			flat.add(i)
+
 # Analytic sharp counter?
 
 
@@ -92,3 +93,16 @@ for i in range(len(progression_intervalls)):
 
 
 # Key estimator / calculator
+
+sharpcircle = ["F#", "C#", "G#", "D#", "A#", "E#", "B#"]
+keylist = []
+
+for i in sharpcircle:
+	if i in sharp:
+		keylist.append(i)
+
+keydict = {
+	"F#":"G-Dur"
+}
+
+print(keylist[-1])
