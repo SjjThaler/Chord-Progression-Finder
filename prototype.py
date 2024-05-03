@@ -109,3 +109,4 @@ print(keylist[-1])
 
 # Stufen estimator => I-IV-I
 # if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
+# alle modis überprüfen ob der modi dem letzten akkord entspricht
