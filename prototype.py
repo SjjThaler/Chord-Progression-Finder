@@ -20,7 +20,7 @@ print(progression)
 sharp = set()
 for sublist in progression:
     for i in sublist:
-        if "#" in i:
+        if "#" or "b" in i:
             sharp.add(i)
 
 
