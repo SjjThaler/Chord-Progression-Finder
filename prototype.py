@@ -16,12 +16,17 @@ while end == "y":
 
 print(progression)
 
-# Sharp counter
+# Unique sharp counter
 sharp = set()
+flat = set()
 for sublist in progression:
     for i in sublist:
         if "#" in i:
             sharp.add(i)
+		if "b" in i:
+			flat.add(i)
+
+# Analytic sharp counter?
 
 
 def intervall (n1, n2):
@@ -85,3 +90,6 @@ for i in range(len(progression_intervalls)):
 
 
 	print(chord_names[tuple(progression_intervalls[i])])
+
+
+# Key estimator / calculator
