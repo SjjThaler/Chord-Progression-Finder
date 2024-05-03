@@ -92,7 +92,7 @@ for i in range(len(progression_intervalls)):
 	print(chord_names[tuple(progression_intervalls[i])])
 
 
-# Key estimator / calculator
+# Leading tone key estimator
 
 sharpcircle = ["F#", "C#", "G#", "D#", "A#", "E#", "B#"]
 keylist = []
@@ -106,3 +106,6 @@ keydict = {
 }
 
 print(keylist[-1])
+
+# Stufen estimator => I-IV-I
+# if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
