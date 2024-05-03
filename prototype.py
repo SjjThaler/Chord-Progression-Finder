@@ -3,7 +3,7 @@ notes = []
 note = ""
 progression = []
 end="y"
-while end == "X":
+while end == "y":
 	while note != "X":
 		note = input("Input notes (C#/Cb):").capitalize()
 		if note != "X":
