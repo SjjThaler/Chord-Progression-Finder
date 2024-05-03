@@ -19,8 +19,8 @@ print(progression)
 # Unique sharp counter
 sharp = set()
 flat = set()
-for sublist in progression:
-	for i in sublist:
+for i_sublist in progression:
+	for i in i_sublist:
 		if "#" in i:
 			sharp.add(i)
 		if "b" in i:
