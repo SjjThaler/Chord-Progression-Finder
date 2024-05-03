@@ -23,9 +23,8 @@ for sublist in progression:
     for i in sublist:
         if "#" or "b" in i:
             sharp.add(i)
-		if "b" in i:
-			flat.add(i)
-
+	if "b" in i:
+		flat.add(i)
 # Analytic sharp counter?
 
 
