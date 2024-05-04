@@ -104,15 +104,17 @@ for i in range(len(progression_intervalls)):
 sharpcircle = ["F#", "C#", "G#", "D#", "A#", "E#", "B#"]
 keylist = []
 
-for i in sharpcircle:
-	if i in sharp:
-		keylist.append(i)
+def leadest():
+	for i in sharpcircle:
+		if i in sharp:
+			keylist.append(i)
 
-keydict = {
-	"F#":"G-Dur"
-}
+	keydict = {
+		"F#": "G-Dur"
+	}
+	return keydict[keylist[-1]]
 
-print(keylist[-1])
+
 
 # Stufen estimator => I-IV-I
 # if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
