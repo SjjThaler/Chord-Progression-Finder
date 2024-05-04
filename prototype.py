@@ -85,7 +85,14 @@ for i in range(len(progression_intervalls)):
 					("4", "5"): f"{progression[i][2]}/{progression[i][0]} Moll",
 					# Dur sept
 					("4", "3", "4"): f"{progression[i][0]}maj7",
-					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7"
+					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
+					# Moll sept
+					("3", "4", "3"): f"{progression[i][0]}m7",
+				   	# Dominant 7th
+				   ("4","3","3"):f"{progression[i][0]}7"
+
+
+
 	}
 
 
