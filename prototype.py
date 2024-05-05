@@ -85,7 +85,8 @@ for i_chord in progression:
 print(progression_intervalls)
 
 
-
+# convert intervalls to Chord-Name
+chord_names = []
 for i in range(len(progression_intervalls)):
 	chord_names = {("4", "3"): f"{progression[i][0]} Dur",
 					("5", "4"): f"{progression[i][1]}/{progression[i][0]} Dur",
@@ -94,7 +95,7 @@ for i in range(len(progression_intervalls)):
 					("3", "4"): f"{progression[i][0]} Moll",
 					("5", "3"): f"{progression[i][1]}/{progression[i][0]} Moll",
 					("4", "5"): f"{progression[i][2]}/{progression[i][0]} Moll",
-					# Dur sept
+					# Dur Maj-sept
 					("4", "3", "4"): f"{progression[i][0]}maj7",
 					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
 					# Moll sept
@@ -109,7 +110,9 @@ for i in range(len(progression_intervalls)):
 
 
 	}
+	chord_names.append(chord_names_dict[tuple(progression_intervalls[i])])
 
+print(f"Chord names {chord_names}")
 
 	print(chord_names[tuple(progression_intervalls[i])])
 
