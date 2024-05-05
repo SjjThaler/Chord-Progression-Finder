@@ -139,12 +139,18 @@ print(f"Chord root {chord_root}")
 # Leading tone key estimator
 
 sharpcircle = ["F#", "C#", "G#", "D#", "A#", "E#", "B#"]
+flatcircle = ["Bb", "Eb", "Ab", "Db", "Gb", "Cb", "Fb"]
 keylist = []
 
 def leadest():
-	for i in sharpcircle:
-		if i in sharp:
-			keylist.append(i)
+	if len(sharp) > len(flat):
+		for i in sharpcircle:
+			if i in sharp:
+				keylist.append(i)
+	else:
+		for i in flatcircle:
+			if i in flat:
+				keylist.append(i)
 
 	keydict = {
 		"F#": "G-Dur",
@@ -154,11 +160,18 @@ def leadest():
 		"A#": "B-Dur",
 		"E#": "F#-Dur",
 		"B#": "C#-Dur",
+		"Bb": "F-Dur",
+		"Eb": "Bb-Dur",
+		"Ab": "Eb-Dur",
+		"Db": "Ab-Dur",
+		"Gb": "Db-Dur",
+		"Cb": "Gb-Dur",
+		"Fb": "Cb-Dur",
 	}
 	return keydict[keylist[-1]]
 
-
-if len(sharp) >= 1:
+print(keylist)
+if len(keylist) >= 1:
 	print("Key of chord progression is: ",leadest())
 elif chord_root[-1] == "A":
 	print("Key of chord progression is: A minor")
