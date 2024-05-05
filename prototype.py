@@ -110,7 +110,7 @@ for i in range(len(progression_intervalls)):
 						("11", "8", "9"): f"{progression[i][0]}maj7",
 					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
 					("4", "1", "4"): f"{progression[i][2]}/{progression[i][0]}maj7",
-					#("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
+					("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
 					# Moll sept
 					("3", "4", "3"): f"{progression[i][0]}m7",
 				   	# Dominant 7th
@@ -133,17 +133,43 @@ print(f"Chord names {chord_names}")
 chord_root = []
 for i in range(len(progression_intervalls)):
 	# chord-root dict
-	chord_root_dict = {("4", "3"): progression[i][0],
-				  ("5", "4"): progression[i][1],
-				  ("3", "5"): progression[i][2],
-				  # Moll
-				  ("3", "4"): progression[i][0],
-				  ("5", "3"): progression[i][1],
-				  ("4", "5"): progression[i][2],
-				  # Dur Maj-sept
-				  ("4", "3", "4"): progression[i][0],
-				  ("1", "4", "3"): progression[i][1]
-				  }
+	chord_root_dict = {("4", "3"): f"{progression[i][0]}",
+						("7", "9"): f"{progression[i][0]}",
+					("5", "4"): f"{progression[i][1]}",
+						("8", "7"): f"{progression[i][1]}",
+					("3", "5"): f"{progression[i][2]}",
+						("9", "8"): f"{progression[i][2]}",
+					# Moll
+					("3", "4"): f"{progression[i][0]} Moll",
+					("5", "3"): f"{progression[i][1]}",
+						("9", "7"): f"{progression[i][1]}",
+					("4", "5"): f"{progression[i][2]}",
+						("8", "9"): f"{progression[i][2]}",
+					("7", "8"): f"{progression[i][0]} Moll",
+					# Dur Maj-sept
+					("4", "3", "4"): f"{progression[i][0]}maj7",
+						("4", "7", "8"): f"{progression[i][0]}maj7",
+						("7", "4", "5"): f"{progression[i][0]}maj7",
+						("7", "9", "7"): f"{progression[i][0]}maj7",
+						("11", "5", "3"): f"{progression[i][0]}maj7",
+						("11", "8", "9"): f"{progression[i][0]}maj7",
+					("1", "4", "3"): f"{progression[i][1]}",
+					("4", "1", "4"): f"{progression[i][2]}",
+					("3", "4", "1"): f"{progression[i][3]}",
+					# Moll sept
+					("3", "4", "3"): f"{progression[i][0]}",
+				   	# Dominant 7th
+				   ("4","3","3"):f"{progression[i][0]}",
+					# Minor major 7th
+						("3","4","4"):f"{progression[i][0]}",
+				   # Augmented
+				   ("4","4"):f"{progression[i][0]}",
+				   # Diminished
+				   ("3","3"):f"{progression[i][0]}"
+
+
+
+	}
 
 	chord_root.append(chord_root_dict[tuple(progression_intervalls[i])])
 
