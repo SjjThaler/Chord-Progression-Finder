@@ -75,9 +75,9 @@ print(notes)
 
 chord_intervalls = []
 progression_intervalls = []
-for chord in progression:
-	for i in range(len(chord)-1):
-		chord_intervalls.append(str(intervall(chord[i], chord[i+1])))
+for i_chord in progression:
+	for i in range(len(i_chord)-1):
+		chord_intervalls.append(str(intervall(i_chord[i], i_chord[i+1]))) # Uses intervall function to create chord intervalls for each input group
 	progression_intervalls.append(chord_intervalls)
 	print(chord_intervalls)
 	chord_intervalls = []
