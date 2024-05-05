@@ -110,11 +110,17 @@ def leadest():
 			keylist.append(i)
 
 	keydict = {
-		"F#": "G-Dur"
+		"F#": "G-Dur",
+		"C#": "D-Dur",
+		"G#": "A-Dur",
+		"D#": "E-Dur",
+		"A#": "B-Dur",
+		"E#": "F#-Dur",
+		"B#": "C#-Dur",
 	}
 	return keydict[keylist[-1]]
 
-
+print(leadest())
 
 # Stufen estimator => I-IV-I
 # if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
