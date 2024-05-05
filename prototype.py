@@ -77,10 +77,10 @@ chord_intervalls = []
 progression_intervalls = []
 for i_chord in progression:
 	for i in range(len(i_chord)-1):
-		chord_intervalls.append(str(intervall(i_chord[i], i_chord[i+1]))) # Uses intervall function to create chord intervalls for each input group
-	progression_intervalls.append(chord_intervalls)
+		chord_intervalls.append(str(intervall(i_chord[i], i_chord[i+1]))) # Uses intervall function to create chord intervalls for each input group and adds the intervalls to chord_intervalls
+	progression_intervalls.append(chord_intervalls) # Appends the intervall combination of each chord to the progression_intervalls list
 	print(chord_intervalls)
-	chord_intervalls = []
+	chord_intervalls = [] # Cleans the chord_intervalls list for the next loop iteration
 
 print(progression_intervalls)
 
