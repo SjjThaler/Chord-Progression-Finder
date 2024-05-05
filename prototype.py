@@ -170,9 +170,10 @@ def leadest():
 	}
 	return keydict[keylist[-1]]
 
-print(keylist)
+keyest = leadest()
+
 if len(keylist) >= 1:
-	print("Key of chord progression is: ",leadest())
+	print("Key of chord progression is: ",keyest)
 elif chord_root[-1] == "A":
 	print("Key of chord progression is: A minor")
 elif chord_root[-1] == "C":
