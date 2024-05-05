@@ -157,9 +157,13 @@ def leadest():
 	}
 	return keydict[keylist[-1]]
 
-for i in chord_root:
-	if len(i) >= 2:
-		print("Key of chord progression is: ",leadest())
+
+if len(sharp) >= 1:
+	print("Key of chord progression is: ",leadest())
+elif chord_root[-1] == "A":
+	print("Key of chord progression is: A minor")
+elif chord_root[-1] == "C":
+	print("Key of chord progression is: C major")
 
 # Stufen estimator => I-IV-I
 # if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
