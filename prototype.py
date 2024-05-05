@@ -110,7 +110,7 @@ for i in range(len(progression_intervalls)):
 						("11", "8", "9"): f"{progression[i][0]}maj7",
 					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
 					("4", "1", "4"): f"{progression[i][2]}/{progression[i][0]}maj7",
-					("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
+					#("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
 					# Moll sept
 					("3", "4", "3"): f"{progression[i][0]}m7",
 				   	# Dominant 7th
@@ -184,7 +184,10 @@ def leadest():
 	}
 	return keydict[keylist[-1]]
 
-keyest = leadest()
+if len(sharp) >= 1 or len(flat) >= 1:
+	keyest = leadest()
+
+
 
 if len(keylist) >= 1:
 	if keyest == chord_root[-1]:
