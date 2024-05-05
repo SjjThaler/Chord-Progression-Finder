@@ -1,8 +1,14 @@
+
+# Input of musical notes
 print("Chord indentifier\nStopp with X")
 notes = []
 note = ""
 progression = []
 end="y"
+
+# Input loop to allow:
+# 1. input of multiple musical notes
+# 2. input of several groups of notes
 while end == "y":
 	while note != "X":
 		note = input("Input notes (C#/Cb):").capitalize()
@@ -26,9 +32,10 @@ for i_sublist in progression:
 		if "b" in i:
 			flat.add(i)
 
-# Analytic sharp counter?
+# Analytic sharp counter? Not yet coded...
 
 
+# Intervall calculation method
 def intervall (n1, n2):
     notdict = {
 	"C": 1,
@@ -61,7 +68,11 @@ def intervall (n1, n2):
         note2+=12
 
     return note2-note1
+
+
 print(notes)
+
+
 chord_intervalls = []
 progression_intervalls = []
 for chord in progression:
