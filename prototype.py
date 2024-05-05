@@ -95,6 +95,7 @@ for i in range(len(progression_intervalls)):
 					("3", "4"): f"{progression[i][0]} Moll",
 					("5", "3"): f"{progression[i][1]}/{progression[i][0]} Moll",
 					("4", "5"): f"{progression[i][2]}/{progression[i][0]} Moll",
+					("7", "8"): f"{progression[i][0]} Moll",
 					# Dur Maj-sept
 					("4", "3", "4"): f"{progression[i][0]}maj7",
 					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
@@ -114,7 +115,25 @@ for i in range(len(progression_intervalls)):
 
 print(f"Chord names {chord_names}")
 
-print(chord_names[tuple(progression_intervalls[i])])
+# identify chord-root-note
+chord_root = []
+for i in range(len(progression_intervalls)):
+	# chord-root dict
+	chord_root_dict = {("4", "3"): progression[i][0],
+				  ("5", "4"): progression[i][1],
+				  ("3", "5"): progression[i][2],
+				  # Moll
+				  ("3", "4"): progression[i][0],
+				  ("5", "3"): progression[i][1],
+				  ("4", "5"): progression[i][2],
+				  # Dur Maj-sept
+				  ("4", "3", "4"): progression[i][0],
+				  ("1", "4", "3"): progression[i][1]
+				  }
+
+	chord_root.append(chord_root_dict[tuple(progression_intervalls[i])])
+
+print(f"Chord root {chord_root}")
 
 
 # Leading tone key estimator
@@ -138,7 +157,9 @@ def leadest():
 	}
 	return keydict[keylist[-1]]
 
-print("Key of chord progression is: ",leadest())
+for i in chord_root:
+	if len(i) >= 2:
+		print("Key of chord progression is: ",leadest())
 
 # Stufen estimator => I-IV-I
 # if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
