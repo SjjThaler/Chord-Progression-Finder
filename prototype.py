@@ -89,7 +89,11 @@ for i in range(len(progression_intervalls)):
 					# Moll sept
 					("3", "4", "3"): f"{progression[i][0]}m7",
 				   	# Dominant 7th
-				   ("4","3","3"):f"{progression[i][0]}7"
+				   ("4","3","3"):f"{progression[i][0]}7",
+				   # Augmented
+				   ("4","4"):f"{progression[i][0]}aug",
+				   # Diminished
+				   ("3","3"):f"{progression[i][0]}dim"
 
 
 
