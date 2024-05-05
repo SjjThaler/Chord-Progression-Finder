@@ -120,7 +120,7 @@ def leadest():
 	}
 	return keydict[keylist[-1]]
 
-print(leadest())
+print("Key of chord progression is: ",leadest())
 
 # Stufen estimator => I-IV-I
 # if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
