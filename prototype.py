@@ -187,9 +187,13 @@ def leadest():
 keyest = leadest()
 
 if len(keylist) >= 1:
-	print("Key of chord progression is: ",keyest)
+	if keyest == chord_root[-1]:
+		print(f"Leadtone and chord root indicate the key of: {chord_root[-1]}")
+	else:
+		print(f"Chord root indicates key of: {chord_root[-1]}")
 else:
-	print(f"Key of chord progression is: {chord_root[-1]}")
+	print(f"Chord root indicates key of: {chord_root[-1]}")
+
 
 # Stufen estimator => I-IV-I
 # if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
