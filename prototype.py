@@ -187,11 +187,11 @@ def leadest():
 if len(sharp) >= 1 or len(flat) >= 1:
 	keyest = leadest()
 
-
+print(keyest)
 
 if len(keylist) >= 1:
 	if keyest == chord_root[-1]:
-		print(f"Leadtone and chord root indicate the key of: {chord_root[-1]}")
+		print(f"Leadtone and chord root indicate the key of: {chord_root[-1]}") # Das funktioniert noch nicht, weil chord root immer nur eine einzelne Note ist
 	else:
 		print(f"Chord root indicates key of: {chord_root[-1]}")
 else:
