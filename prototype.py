@@ -211,9 +211,9 @@ def leadest():
 	return keydict[keylist[-1]]
 
 if len(sharp) >= 1 or len(flat) >= 1:
-	keyest = leadest()
+	keylist = leadest()
 
-print(keyest)
+print(keylist)
 
 if len(keylist) >= 1:
 	if keyest == chord_root[-1]:
