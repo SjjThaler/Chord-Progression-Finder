@@ -88,7 +88,7 @@ print(progression_intervalls)
 # convert intervalls to Chord-Name
 chord_names = []
 for i in range(len(progression_intervalls)):
-	chord_names = {("4", "3"): f"{progression[i][0]} Dur",
+	chord_names_dict = {("4", "3"): f"{progression[i][0]} Dur",
 					("5", "4"): f"{progression[i][1]}/{progression[i][0]} Dur",
 					("3", "5"): f"{progression[i][2]}/{progression[i][0]} Dur",
 					# Moll
