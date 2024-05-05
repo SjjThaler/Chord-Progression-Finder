@@ -103,8 +103,14 @@ for i in range(len(progression_intervalls)):
 					("7", "8"): f"{progression[i][0]} Moll",
 					# Dur Maj-sept
 					("4", "3", "4"): f"{progression[i][0]}maj7",
+						("4", "7", "8"): f"{progression[i][0]}maj7",
+						("7", "4", "5"): f"{progression[i][0]}maj7",
+						("7", "9", "7"): f"{progression[i][0]}maj7",
+						("11", "5", "3"): f"{progression[i][0]}maj7",
+						("11", "8", "9"): f"{progression[i][0]}maj7",
 					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
 					("4", "1", "4"): f"{progression[i][2]}/{progression[i][0]}maj7",
+					("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
 					# Moll sept
 					("3", "4", "3"): f"{progression[i][0]}m7",
 				   	# Dominant 7th
@@ -180,7 +186,7 @@ keyest = leadest()
 
 if len(keylist) >= 1:
 	print("Key of chord progression is: ",keyest)
-else
+else:
 	print(f"Key of chord progression is: {chord_root[-1]}")
 
 # Stufen estimator => I-IV-I
