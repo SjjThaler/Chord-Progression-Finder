@@ -90,37 +90,37 @@ chord_names = []
 for i in range(len(progression_intervalls)):
 	chord_names_dict = {("4", "3"): f"{progression[i][0]} Dur",
 						("7", "9"): f"{progression[i][0]} Dur",
-					("5", "4"): f"{progression[i][1]}/{progression[i][0]} Dur",
+						("5", "4"): f"{progression[i][1]}/{progression[i][0]} Dur",
 						("8", "7"): f"{progression[i][1]}/{progression[i][0]} Dur",
-					("3", "5"): f"{progression[i][2]}/{progression[i][0]} Dur",
+						("3", "5"): f"{progression[i][2]}/{progression[i][0]} Dur",
 						("9", "8"): f"{progression[i][2]}/{progression[i][0]} Dur",
-					# Moll
-					("3", "4"): f"{progression[i][0]} Moll",
-					("5", "3"): f"{progression[i][1]}/{progression[i][0]} Moll",
+						# Moll
+						("3", "4"): f"{progression[i][0]} Moll",
+						("5", "3"): f"{progression[i][1]}/{progression[i][0]} Moll",
 						("9", "7"): f"{progression[i][1]}/{progression[i][0]} Moll",
-					("4", "5"): f"{progression[i][2]}/{progression[i][0]} Moll",
+						("4", "5"): f"{progression[i][2]}/{progression[i][0]} Moll",
 						("8", "9"): f"{progression[i][2]}/{progression[i][0]} Moll",
-					("7", "8"): f"{progression[i][0]} Moll",
-					# Dur Maj-sept
-					("4", "3", "4"): f"{progression[i][0]}maj7",
+						("7", "8"): f"{progression[i][0]} Moll",
+						# Dur Maj-sept
+						("4", "3", "4"): f"{progression[i][0]}maj7",
 						("4", "7", "8"): f"{progression[i][0]}maj7",
 						("7", "4", "5"): f"{progression[i][0]}maj7",
 						("7", "9", "7"): f"{progression[i][0]}maj7",
 						("11", "5", "3"): f"{progression[i][0]}maj7",
 						("11", "8", "9"): f"{progression[i][0]}maj7",
-					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
-					("4", "1", "4"): f"{progression[i][2]}/{progression[i][0]}maj7",
-					("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
-					# Moll sept
-					("3", "4", "3"): f"{progression[i][0]}m7",
-				   	# Dominant 7th
-				   ("4","3","3"):f"{progression[i][0]}7",
-					# Minor major 7th
+						("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
+						("4", "1", "4"): f"{progression[i][2]}/{progression[i][0]}maj7",
+						("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
+						# Moll sept
+						("3", "4", "3"): f"{progression[i][0]}m7",
+						# Dominant 7th
+						("4","3","3"):f"{progression[i][0]}7",
+						# Minor major 7th
 						("3","4","4"):f"{progression[i][0]}minmaj7",
-				   # Augmented
-				   ("4","4"):f"{progression[i][0]}aug",
-				   # Diminished
-				   ("3","3"):f"{progression[i][0]}dim"
+					   # Augmented
+					   ("4","4"):f"{progression[i][0]}aug",
+					   # Diminished
+					   ("3","3"):f"{progression[i][0]}dim"
 
 
 
