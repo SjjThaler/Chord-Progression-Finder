@@ -89,16 +89,22 @@ print(progression_intervalls)
 chord_names = []
 for i in range(len(progression_intervalls)):
 	chord_names_dict = {("4", "3"): f"{progression[i][0]} Dur",
+						("7", "9"): f"{progression[i][0]} Dur",
 					("5", "4"): f"{progression[i][1]}/{progression[i][0]} Dur",
+						("8", "7"): f"{progression[i][1]}/{progression[i][0]} Dur",
 					("3", "5"): f"{progression[i][2]}/{progression[i][0]} Dur",
+						("9", "8"): f"{progression[i][2]}/{progression[i][0]} Dur",
 					# Moll
 					("3", "4"): f"{progression[i][0]} Moll",
 					("5", "3"): f"{progression[i][1]}/{progression[i][0]} Moll",
+						("9", "7"): f"{progression[i][1]}/{progression[i][0]} Moll",
 					("4", "5"): f"{progression[i][2]}/{progression[i][0]} Moll",
+						("8", "9"): f"{progression[i][2]}/{progression[i][0]} Moll",
 					("7", "8"): f"{progression[i][0]} Moll",
 					# Dur Maj-sept
 					("4", "3", "4"): f"{progression[i][0]}maj7",
 					("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
+					("4", "1", "4"): f"{progression[i][2]}/{progression[i][0]}maj7",
 					# Moll sept
 					("3", "4", "3"): f"{progression[i][0]}m7",
 				   	# Dominant 7th
@@ -174,10 +180,8 @@ keyest = leadest()
 
 if len(keylist) >= 1:
 	print("Key of chord progression is: ",keyest)
-elif chord_root[-1] == "A":
-	print("Key of chord progression is: A minor")
-elif chord_root[-1] == "C":
-	print("Key of chord progression is: C major")
+else
+	print(f"Key of chord progression is: {chord_root[-1]}")
 
 # Stufen estimator => I-IV-I
 # if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
