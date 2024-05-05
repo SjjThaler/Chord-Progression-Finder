@@ -114,7 +114,7 @@ for i in range(len(progression_intervalls)):
 
 print(f"Chord names {chord_names}")
 
-	print(chord_names[tuple(progression_intervalls[i])])
+print(chord_names[tuple(progression_intervalls[i])])
 
 
 # Leading tone key estimator
