@@ -180,7 +180,7 @@ keyest = leadest()
 
 if len(keylist) >= 1:
 	print("Key of chord progression is: ",keyest)
-else
+else:
 	print(f"Key of chord progression is: {chord_root[-1]}")
 
 # Stufen estimator => I-IV-I
