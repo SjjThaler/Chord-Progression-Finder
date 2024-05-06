@@ -177,17 +177,17 @@ for i in range(len(progression_intervalls)):
 print(f"Chord root {chord_root}")
 
 # scale estimator
-all_notes = [item for sublist in progression for item in sublist]
+all_notes = [item for sublist in progression for item in sublist] # fasst alle Noten der Akkorde in eine Liste
 print(all_notes)
 scale = []
 all_scale = []
-for i_root in chord_root:
-	for i_all in all_notes:
-		scale.append(str(intervall(i_root, i_all)))
-	uni_scale = list(map(int, list(set(scale))))
-	uni_scale.sort()
-	all_scale.append(list(map(str, uni_scale)))
-	scale = []
+for i_root in chord_root: # i_root ist die root-note der eingegebenen Akkorde
+	for i_all in all_notes: # i_all sind alle gegebenen Noten
+		scale.append(str(intervall(i_root, i_all))) # fügt das intervall von einer root-note zu allen gegebenen hinzu
+	uni_scale = list(map(int, list(set(scale)))) # nachdem alle intervall in scale = [] gespeichert wurden, filtert es mit einem set alle mehrfachen raus, wandelt alle intervalle mit map in int um, um sie zu ordnen
+	uni_scale.sort() # hier wird geordnet
+	all_scale.append(list(map(str, uni_scale))) # hier wird wieder alles in str umgewandelt und die skala(aus intervallen) einer liste zugefügt
+	scale = [] # reset... man muss anmerken dass das obige ordnen irrelevant für den nächsten schritt ist und keinen negativen einfluss auf das outcome hat :)
 
 print(all_scale)
 scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
@@ -198,12 +198,12 @@ scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
 				("0", "2", "4", "6", "7", "9", "11"): "Lydisch"
 }
 scale_name = []
-scale_root_index = -1
-for i_scale in all_scale:
+scale_root_index = -1 # der index damit chord root notes mit der scale verbunden werden kann ...
+for i_scale in all_scale: # ... hier könnte man enumerate() hernehmen - for x, y in enumerate(all_scale):
 	scale_root_index += 1
-	for key, value in scale_dict.items():
-		if all(i in key for i in i_scale):
-			scale_name.append(f"{chord_root[scale_root_index]} {value}")
+	for key, value in scale_dict.items(): # hier wird durch das obige scale dict mit .items() mit den jeweiligen key und value iteriert
+		if all(i in key for i in i_scale): # all() gibt True, wenn alle booleans darin True sind. i sind hier die ermittelten intervalle des scale estimators. dann wird überprüft ob i in dem key (der intervall-struktur der modis) is und gibt einen bool aus.
+			scale_name.append(f"{chord_root[scale_root_index]} {value}") # wenn alle gegebenen intervalle in einem modus auch vorkommen ...
 
 
 print(scale_name)
