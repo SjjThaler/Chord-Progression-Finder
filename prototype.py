@@ -184,30 +184,30 @@ all_scale = []
 for i_root in chord_root:
 	for i_all in all_notes:
 		scale.append(str(intervall(i_root, i_all)))
-	uni_scale = list(set(scale))
+	uni_scale = list(map(int, list(set(scale))))
 	uni_scale.sort()
-	all_scale.append(uni_scale)
+	all_scale.append(list(map(str, uni_scale)))
 	scale = []
 
 print(all_scale)
 scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
 				("0", "2", "3", "5", "7", "8", "10"): "Aeolisch",
 				("0", "2", "3", "5", "7", "8", "11"): "Harmonisch-Moll",
-				("0", "2", "4", "5", "7", "6", "10"): "Mixolydisch",
-				("0", "2", "3", "6", "7", "8", "11"): "Zigeuner-Moll"
+				("0", "2", "4", "5", "7", "9", "10"): "Mixolydisch",
+				("0", "2", "3", "6", "7", "8", "11"): "Zigeuner-Moll",
+				("0", "2", "4", "6", "7", "9", "11"): "Lydisch"
 }
 scale_name = []
+scale_root_index = -1
 for i_scale in all_scale:
+	scale_root_index += 1
 	for key, value in scale_dict.items():
 		if all(i in key for i in i_scale):
-			scale_name.append(value)
+			scale_name.append(f"{chord_root[scale_root_index]} {value}")
+
 
 print(scale_name)
-possible_scales = []
-for i in range(len(chord_root)):
-	possible_scales.append([f"{chord_root[i]} {scale_name[i]}"])
 
-print(possible_scales)
 
 
 
