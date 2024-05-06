@@ -203,6 +203,12 @@ for i_scale in all_scale:
 			scale_name.append(value)
 
 print(scale_name)
+possible_scales = []
+for i in range(len(chord_root)):
+	possible_scales.append([f"{chord_root[i]} {scale_name[i]}"])
+
+print(possible_scales)
+
 
 
 
