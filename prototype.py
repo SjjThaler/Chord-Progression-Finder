@@ -212,7 +212,7 @@ def leadest():
 	return keydict[keylist[-1]]
 
 if len(sharp) >= 1 or len(flat) >= 1:
-	keyest = leadest()
+	keylist = leadest()
 
 print(keylist)
 
