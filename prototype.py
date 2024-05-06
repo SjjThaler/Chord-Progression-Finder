@@ -192,6 +192,7 @@ for i_root in chord_root:
 print(all_scale)
 scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
 				("0", "2", "3", "5", "7", "8", "10"): "Aeolisch",
+				("0", "2", "3", "5", "7", "8", "11"): "Harmonisch-Moll",
 				("0", "2", "4", "5", "7", "6", "10"): "Mixolydisch",
 				("0", "2", "3", "6", "7", "8", "11"): "Zigeuner-Moll"
 }
