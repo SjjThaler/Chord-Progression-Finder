@@ -20,7 +20,7 @@ while end == "y":
 	notes = []
 	end = input("Continue y")
 
-print(progression)
+print(f"Progression {progression}")
 
 # Unique sharp counter
 sharp = set()
@@ -175,6 +175,34 @@ for i in range(len(progression_intervalls)):
 	chord_root.append(chord_root_dict[tuple(progression_intervalls[i])])
 
 print(f"Chord root {chord_root}")
+
+# scale estimator
+all_notes = [item for sublist in progression for item in sublist]
+print(all_notes)
+scale = []
+all_scale = []
+for i_root in chord_root:
+	for i_all in all_notes:
+		scale.append(str(intervall(i_root, i_all)))
+	uni_scale = list(set(scale))
+	uni_scale.sort()
+	all_scale.append(uni_scale)
+	scale = []
+
+print(all_scale)
+scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
+				("0", "2", "3", "5", "7", "8", "10"): "Aeolisch",
+				("0", "2", "4", "5", "7", "6", "10"): "Mixolydisch",
+				("0", "2", "3", "6", "7", "8", "11"): "Zigeuner-Moll"
+}
+scale_name = []
+for i_scale in all_scale:
+	for key, value in scale_dict.items():
+		if all(i in key for i in i_scale):
+			scale_name.append(value)
+
+print(scale_name)
+
 
 
 # Leading tone key estimator
