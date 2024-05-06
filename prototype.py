@@ -198,17 +198,30 @@ scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
 				("0", "2", "4", "6", "7", "9", "11"): "Lydisch"
 }
 scale_name = []
-scale_root_index = -1 # der index damit chord root notes mit der scale verbunden werden kann ...
-for i_scale in all_scale: # ... hier könnte man enumerate() hernehmen - for x, y in enumerate(all_scale):
-	scale_root_index += 1
+#scale_root_index = -1 # der index damit chord root notes mit der scale verbunden werden kann ...
+for i_index, i_scale in enumerate(all_scale): # ... hier könnte man enumerate() hernehmen - for x, y in enumerate(all_scale):
+	#scale_root_index += 1
 	for key, value in scale_dict.items(): # hier wird durch das obige scale dict mit .items() mit den jeweiligen key und value iteriert
 		if all(i in key for i in i_scale): # all() gibt True, wenn alle booleans darin True sind. i sind hier die ermittelten intervalle des scale estimators. dann wird überprüft ob i in dem key (der intervall-struktur der modis) is und gibt einen bool aus.
-			scale_name.append(f"{chord_root[scale_root_index]} {value}") # wenn alle gegebenen intervalle in einem modus auch vorkommen ...
+			scale_name.append([chord_root[i_index], value]) # wenn alle gegebenen intervalle in einem modus auch vorkommen ...
+
 
 
 print(scale_name)
 
+# scale struktur
+scale_structure = {
+				"Ionisch": ("1", "2", "3", "4", "5", "6", "7"),
+				"Aeolisch": ("1", "2", "3b", "4", "5", "6b", "7b"),
+				"Harmonisch-Moll": ("1", "2", "3b", "4", "5", "6b", "7"),
+				"Mixolydisch": ("1", "2", "3", "4", "5", "6", "7b"),
+				"Zigeuner-Moll": ("1", "2", "3b", "4#", "5", "6b", "7"),
+				"Lydisch": ("1", "2", "3", "4#", "5", "6", "7")
+}
 
+# root to scale_structure
+root_scale_structure = [[i_root, scale_structure[scale]]for i_root, scale in scale_name]
+print(root_scale_structure)
 
 
 
