@@ -233,9 +233,7 @@ scale_structure = {
 root_scale_structure = [[i_root, scale_structure[scale]]for i_root, scale in scale_name]
 print(f"Root-Scale-Structure: {root_scale_structure}")
 
-# root to progression
-root_progression = []
-# intervall scale-root to chord-roots
+# erzeugt die intervalle zwischen allen chord-root-notes
 chord_root_to_root_run = []
 chord_root_to_root = []
 for i_chord_root in chord_root:
@@ -243,39 +241,43 @@ for i_chord_root in chord_root:
 		chord_root_to_root_run.append(str(intervall(i_chord_root, i_chord)))
 	chord_root_to_root.append(chord_root_to_root_run)
 	chord_root_to_root_run = []
-
 print(f"chord-root-to-root: {chord_root_to_root}")
-# index of all_scale
+
+# index of all modes
+# _____________________________________________________________
+# der index dient dazu aus den intervallen der root_to_root die gleiche stelle in den modi zu finden.
+# z.B die root-chord-notes C, F, G haben die intervalle untereinander in halbtönen von C aus [0, 5, 7]
+# in einem modus, z.B Ionisch mit der struktur [0, 2, 4, 5, 7, 9, 11] ist der index von 0 = 0, von 5 = 3 und von 7 ist es 4
+# der gleiche index (0, 3, 4) gibt in dem dict scale_structure dann die stufen an
+# z.B ionisch [1, 2, 3, 4, 5, 6, 7]. daraus folgt 1, 4, 5
+#_________________________________________________________________
 scale_index_run = []
 scale_index = []
-for i_root, i_root_to_root in zip(chord_root, chord_root_to_root):
-	for i_scale in scale_name:
-		if i_root == i_scale[0]:
-			for i_root_to_root_run in i_root_to_root:
-				scale_index_run.append(scale_dict_swapped[i_scale[1]].index(i_root_to_root_run))
+for i_root, i_root_to_root in zip(chord_root, chord_root_to_root): # zip verbindet die root-notes mit den intervallen zwischen den root-notes
+	for i_scale in scale_name: # scale_name besitzt die root-notes (index 0) und die möglichen Skalen (index 1) dazu.
+		if i_root == i_scale[0]: # wenn die root-note der chords mit der root-note der möglichen Skalen übereinstimmt...
+			for i_root_to_root_run in i_root_to_root: # ...wird für jedes intervall (chord-root-notes untereinander) der index in der jeweiligen Skala vermerkt
+				scale_index_run.append(scale_dict_swapped[i_scale[1]].index(i_root_to_root_run)) # i_scale[1] is der name der Skala und scale_dict_swapped hat den key (name der skala) und den value (struktur des modus)
 			scale_index.append(scale_index_run)
 			scale_index_run = []
+print(f"scale index: {scale_index}") # der scale_index wird falsch berechnet...
 
 
-print(f"scale index: {scale_index}")
-# get scale-structure step with this index
-root_step_run = []
-root_step = []
-
+# verbindet die liste der root+modi mit dem index, um im nächsten schritt alle drei in einer for-loop schleife zu haben.
 root_scale_structure_index = []
 for i_index, i_root_scale in enumerate(root_scale_structure):
 	i_root_scale.append(scale_index[i_index])
 	root_scale_structure_index.append(i_root_scale)
 print(f"Root_scale_Index: {root_scale_structure_index}")
 
+# erzeugt die Stufen der jeweiligen modi+root
+root_step_run = []
+root_step = []
 for i_root, i_scale, scale_index in root_scale_structure_index:
 	for i in scale_index:
 		root_step_run.append(i_scale[i])
 	root_step.append([i_root, root_step_run])
 	root_step_run = []
-
-
-
 print(f"root-step{root_step}")
 
 
