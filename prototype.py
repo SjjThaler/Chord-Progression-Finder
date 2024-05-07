@@ -120,7 +120,9 @@ for i in range(len(progression_intervalls)):
 						# Augmented
 						("4", "4"): f"{progression[i][0]}aug",
 						# Diminished
-						("3", "3"): f"{progression[i][0]}dim"
+						("3", "3"): f"{progression[i][0]}dim",
+						# Dim-7
+						("3", "3", "4"): f"{progression[i][0]}7b5"
 
 						}
 	if len(progression_intervalls[i]) >= 3:
@@ -165,7 +167,9 @@ for i in range(len(progression_intervalls)):
 						# Augmented
 						("4","4"):f"{progression[i][0]}",
 						# Diminished
-						("3","3"):f"{progression[i][0]}"
+						("3","3"):f"{progression[i][0]}",
+						#Dim-m7
+						("3", "3", "4"): f"{progression[i][0]}"
 
 
 
@@ -178,7 +182,7 @@ print(f"Chord root {chord_root}")
 
 # scale estimator
 all_notes = [item for sublist in progression for item in sublist] # fasst alle Noten der Akkorde in eine Liste
-print(all_notes)
+print(f"All Notes: {all_notes}")
 scale = []
 all_scale = []
 for i_root in chord_root: # i_root ist die root-note der eingegebenen Akkorde
@@ -189,40 +193,90 @@ for i_root in chord_root: # i_root ist die root-note der eingegebenen Akkorde
 	all_scale.append(list(map(str, uni_scale))) # hier wird wieder alles in str umgewandelt und die skala(aus intervallen) einer liste zugefügt
 	scale = [] # reset... man muss anmerken dass das obige ordnen irrelevant für den nächsten schritt ist und keinen negativen einfluss auf das outcome hat :)
 
-print(all_scale)
+print(f"All Scales. {all_scale}")
 scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
 				("0", "2", "3", "5", "7", "8", "10"): "Aeolisch",
 				("0", "2", "3", "5", "7", "8", "11"): "Harmonisch-Moll",
 				("0", "2", "4", "5", "7", "9", "10"): "Mixolydisch",
 				("0", "2", "3", "6", "7", "8", "11"): "Zigeuner-Moll",
-				("0", "2", "4", "6", "7", "9", "11"): "Lydisch"
+				("0", "2", "4", "6", "7", "9", "11"): "Lydisch",
+				("0", "1", "3", "5", "7", "8", "10"): "Phrygisch",
+				("0", "2", "3", "5", "7", "9", "10"): "Dorisch",
+				("0", "1", "3", "5", "6", "8", "10"): "Lokrisch"
 }
+scale_dict_swapped = {value: key for key, value in scale_dict.items()}
+
 scale_name = []
-#scale_root_index = -1 # der index damit chord root notes mit der scale verbunden werden kann ...
-for i_index, i_scale in enumerate(all_scale): # ... hier könnte man enumerate() hernehmen - for x, y in enumerate(all_scale):
-	#scale_root_index += 1
+for i_index, i_scale in enumerate(all_scale):
 	for key, value in scale_dict.items(): # hier wird durch das obige scale dict mit .items() mit den jeweiligen key und value iteriert
 		if all(i in key for i in i_scale): # all() gibt True, wenn alle booleans darin True sind. i sind hier die ermittelten intervalle des scale estimators. dann wird überprüft ob i in dem key (der intervall-struktur der modis) is und gibt einen bool aus.
 			scale_name.append([chord_root[i_index], value]) # wenn alle gegebenen intervalle in einem modus auch vorkommen ...
 
 
 
-print(scale_name)
+print(f"Scale name: {scale_name}")
 
 # scale struktur
 scale_structure = {
-				"Ionisch": ("1", "2", "3", "4", "5", "6", "7"),
-				"Aeolisch": ("1", "2", "3b", "4", "5", "6b", "7b"),
-				"Harmonisch-Moll": ("1", "2", "3b", "4", "5", "6b", "7"),
-				"Mixolydisch": ("1", "2", "3", "4", "5", "6", "7b"),
-				"Zigeuner-Moll": ("1", "2", "3b", "4#", "5", "6b", "7"),
-				"Lydisch": ("1", "2", "3", "4#", "5", "6", "7")
+				"Ionisch": 			("1", "2", "3", "4", "5", "6", "7"),
+				"Aeolisch": 		("1", "2", "3b", "4", "5", "6b", "7b"),
+				"Harmonisch-Moll": 	("1", "2", "3b", "4", "5", "6b", "7"),
+				"Mixolydisch": 		("1", "2", "3", "4", "5", "6", "7b"),
+				"Zigeuner-Moll": 	("1", "2", "3b", "4#", "5", "6b", "7"),
+				"Lydisch": 			("1", "2", "3", "4#", "5", "6", "7"),
+				"Phrygisch":  		("1", "2b", "3b", "4", "5", "6b", "7b"),
+				"Dorisch":			("1", "2", "3b", "4", "5", "6", "7b"),
+				"Lokrisch":			("1", "2b", "3b", "4", "5b", "6b", "7b")
 }
 
 # root to scale_structure
 root_scale_structure = [[i_root, scale_structure[scale]]for i_root, scale in scale_name]
-print(root_scale_structure)
+print(f"Root-Scale-Structure: {root_scale_structure}")
 
+# root to progression
+root_progression = []
+# intervall scale-root to chord-roots
+chord_root_to_root_run = []
+chord_root_to_root = []
+for i_chord_root in chord_root:
+	for i_chord in chord_root:
+		chord_root_to_root_run.append(str(intervall(i_chord_root, i_chord)))
+	chord_root_to_root.append(chord_root_to_root_run)
+	chord_root_to_root_run = []
+
+print(f"chord-root-to-root: {chord_root_to_root}")
+# index of all_scale
+scale_index_run = []
+scale_index = []
+for i_root, i_root_to_root in zip(chord_root, chord_root_to_root):
+	for i_scale in scale_name:
+		if i_root == i_scale[0]:
+			for i_root_to_root_run in i_root_to_root:
+				scale_index_run.append(scale_dict_swapped[i_scale[1]].index(i_root_to_root_run))
+			scale_index.append(scale_index_run)
+			scale_index_run = []
+
+
+print(f"scale index: {scale_index}")
+# get scale-structure step with this index
+root_step_run = []
+root_step = []
+
+root_scale_structure_index = []
+for i_index, i_root_scale in enumerate(root_scale_structure):
+	i_root_scale.append(scale_index[i_index])
+	root_scale_structure_index.append(i_root_scale)
+print(f"Root_scale_Index: {root_scale_structure_index}")
+
+for i_root, i_scale, scale_index in root_scale_structure_index:
+	for i in scale_index:
+		root_step_run.append(i_scale[i])
+	root_step.append([i_root, root_step_run])
+	root_step_run = []
+
+
+
+print(f"root-step{root_step}")
 
 
 # Leading tone key estimator
