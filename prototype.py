@@ -261,6 +261,7 @@ for i_root, i_root_to_root in zip(chord_root, chord_root_to_root): # zip verbind
 			scale_index.append(scale_index_run)
 			scale_index_run = []
 print(f"scale index: {scale_index}") # der scale_index wird falsch berechnet...
+# ok der index wird richtig berechnet, aber die index-listen werden nicht in der richtigen reihenfolge vermerkt
 
 
 # verbindet die liste der root+modi mit dem index, um im nächsten schritt alle drei in einer for-loop schleife zu haben.
