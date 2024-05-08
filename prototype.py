@@ -253,15 +253,18 @@ print(f"chord-root-to-root: {chord_root_to_root}")
 #_________________________________________________________________
 scale_index_run = []
 scale_index = []
-for i_root, i_root_to_root in zip(chord_root, chord_root_to_root): # zip verbindet die root-notes mit den intervallen zwischen den root-notes
-	for i_scale in scale_name: # scale_name besitzt die root-notes (index 0) und die möglichen Skalen (index 1) dazu.
+for i_scale in scale_name:  # scale_name besitzt die root-notes (index 0) und die möglichen Skalen (index 1) dazu.
+	for i_root, i_root_to_root in zip(chord_root, chord_root_to_root): # zip verbindet die root-notes mit den intervallen zwischen den root-notes
 		if i_root == i_scale[0]: # wenn die root-note der chords mit der root-note der möglichen Skalen übereinstimmt...
 			for i_root_to_root_run in i_root_to_root: # ...wird für jedes intervall (chord-root-notes untereinander) der index in der jeweiligen Skala vermerkt
 				scale_index_run.append(scale_dict_swapped[i_scale[1]].index(i_root_to_root_run)) # i_scale[1] is der name der Skala und scale_dict_swapped hat den key (name der skala) und den value (struktur des modus)
 			scale_index.append(scale_index_run)
 			scale_index_run = []
-print(f"scale index: {scale_index}") # der scale_index wird falsch berechnet...
-# ok der index wird richtig berechnet, aber die index-listen werden nicht in der richtigen reihenfolge vermerkt
+			break # wird benötigt damit die chord-root-notes nur einmal hinzugefügt werden, wenn die richtige note gefunden wurde
+#die erste loop trägt das gerüst inne, ein endresultat resultat.
+# in der zweiten loop und der if wird nach den zugehörigen intervallen gesucht.
+# und die letzte loop übersetzt die intervalle in die index
+print(f"scale index: {scale_index}")
 
 
 # verbindet die liste der root+modi mit dem index, um im nächsten schritt alle drei in einer for-loop schleife zu haben.
