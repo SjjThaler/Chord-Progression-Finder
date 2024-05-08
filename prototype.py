@@ -88,6 +88,7 @@ print(progression_intervalls)
 # convert intervalls to Chord-Name
 # hier wäre es besser wenn der value des dict eine liste ausgibt mit root-note und der art des chords, um es später für die stufen nutzen zu können.
 # dabei spart man sich auch das dict das nur die root note bestimmt.
+# da für die stufen bestimmung ob römisch groß/klein, sollte dur und moll vermerkt werden. z.B mit 0 und 1
 chord_names = []
 for i in range(len(progression_intervalls)):
 	chord_names_dict = {("4", "3"): f"{progression[i][0]} Dur",
@@ -200,6 +201,11 @@ for i_root in chord_root: # i_root ist die root-note der eingegebenen Akkorde
 	scale = [] # reset... man muss anmerken dass das obige ordnen irrelevant für den nächsten schritt ist und keinen negativen einfluss auf das outcome hat :)
 
 print(f"All Scales. {all_scale}")
+
+# die skalen müssen so gut es geht vervollständigt werden. pentatonik etc
+# man könnte in scale_dict auch die scale_strukture (stufen) einfügen.
+# man erspart sich ein zweites dict und im folgenden code einige zeilen. ACHTUNG! dabei müsste man viel umschreiben.
+# das dict sähe dann so aus: ("0", "2", "4", "5", "7", "9", "11"): ["Ionisch", ["1", "2", "3", "4", "5", "6", "7"]]
 scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
 				("0", "2", "3", "5", "7", "8", "10"): "Aeolisch",
 				("0", "2", "3", "5", "7", "8", "11"): "Harmonisch-Moll",
@@ -210,15 +216,17 @@ scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
 				("0", "2", "3", "5", "7", "9", "10"): "Dorisch",
 				("0", "1", "3", "5", "6", "8", "10"): "Lokrisch"
 }
+# ein dict dass den key und value der skalen vertauscht hat
 scale_dict_swapped = {value: key for key, value in scale_dict.items()}
+# nach der anpussung des scale_dict wäre scale_dict_swapped nicht mehr nötig
 
 scale_name = []
 for i_index, i_scale in enumerate(all_scale):
 	for key, value in scale_dict.items(): # hier wird durch das obige scale dict mit .items() mit den jeweiligen key und value iteriert
 		if all(i in key for i in i_scale): # all() gibt True, wenn alle booleans darin True sind. i sind hier die ermittelten intervalle des scale estimators. dann wird überprüft ob i in dem key (der intervall-struktur der modis) is und gibt einen bool aus.
 			scale_name.append([chord_root[i_index], value]) # wenn alle gegebenen intervalle in einem modus auch vorkommen ...
-
-
+# nach der anpassung wäre in diesem fall value[0] der skale-name
+# und value[1], die stufen sollte man vielleicht mitnehmen
 
 print(f"Scale name: {scale_name}")
 
@@ -240,6 +248,7 @@ scale_structure = {
 # root to scale_structure
 root_scale_structure = [[i_root, scale_structure[scale]]for i_root, scale in scale_name]
 print(f"Root-Scale-Structure: {root_scale_structure}")
+# nach der dict-anpassung sollte sich hier nichts verändern
 
 # erzeugt die intervalle zwischen allen chord-root-notes
 chord_root_to_root_run = []
@@ -273,6 +282,8 @@ for i_scale in scale_name:  # scale_name besitzt die root-notes (index 0) und di
 # in der zweiten loop und der if wird nach den zugehörigen intervallen gesucht.
 # und die letzte loop übersetzt die intervalle in die index
 print(f"scale index: {scale_index}")
+# nahc der dict-anpassung ändert sich hier einiges (vielleicht). scale_dict_swapped existiert nicht mehr.
+# ... das wäre dann vielleicht scale_dict[i_scale[1]][1].index...
 
 
 # verbindet die liste der root+modi mit dem index, um im nächsten schritt alle drei in einer for-loop schleife zu haben.
@@ -291,7 +302,8 @@ for i_root, i_scale, scale_index in root_scale_structure_index:
 	root_step.append([i_root, root_step_run])
 	root_step_run = []
 print(f"root-step{root_step}")
-
+# nun da die stufen bekannt sind ( von allen modes) könnte man mit dem (anstehenden)-update von chord_name bestimmen, ob römisch groß/klein und der dazugehörigen chord analyse
+# vielleicht wäre es nützlich im dictionary dur und moll chords zu vermerken. z.B mit 0 für Dur und 1 für Moll
 
 # Leading tone key estimator
 
