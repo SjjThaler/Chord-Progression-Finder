@@ -86,6 +86,8 @@ print(progression_intervalls)
 
 
 # convert intervalls to Chord-Name
+# hier wäre es besser wenn der value des dict eine liste ausgibt mit root-note und der art des chords, um es später für die stufen nutzen zu können.
+# dabei spart man sich auch das dict das nur die root note bestimmt.
 chord_names = []
 for i in range(len(progression_intervalls)):
 	chord_names_dict = {("4", "3"): f"{progression[i][0]} Dur",
@@ -128,7 +130,11 @@ for i in range(len(progression_intervalls)):
 	if len(progression_intervalls[i]) >= 3:
 		chord_names_dict.update({("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7"})
 	chord_names.append(chord_names_dict[tuple(progression_intervalls[i])])
-
+# dann kann man mit, z.B. den intervallen (4, 3), chord_names[n][0] die root-note, und mit chord_names[n][-1] die art bestimmen, in dem Beispiel Dur
+# und man kann dann leichter die bassnote im stufen system bestimmen.
+# jeder chord in chord_names besteht dann aus einer liste mit 2, oder bei inversionen mit 3 elementen.
+# die anpassung sollte eigentlich leicht gehen. statt einem f-string ein tuple
+# und wir müssen uns noch auf eine schreibweise der chords einigen/recherchieren.
 
 print(f"Chord names {chord_names}")
 
@@ -217,6 +223,8 @@ for i_index, i_scale in enumerate(all_scale):
 print(f"Scale name: {scale_name}")
 
 # scale struktur
+# hier könnte man statt zahlen die römischen ziffern ersetzen.
+# andererseits könnte man die römisch groß/klein schreibweise (dur/moll) abhänig von der chord analyse bestimmen. die variante lässt mehr spielraum für modulationen
 scale_structure = {
 				"Ionisch": 			("1", "2", "3", "4", "5", "6", "7"),
 				"Aeolisch": 		("1", "2", "3b", "4", "5", "6b", "7b"),
