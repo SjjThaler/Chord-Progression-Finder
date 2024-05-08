@@ -11,7 +11,7 @@ end="y"
 # 2. input of several groups of notes
 end= input("mit x: Beispiel Kadenz verwenden?\nmit y: Mach eigene angaben\nEingabe: ")
 if end == "x":
-	kadenz = input("Wähle eine und bestätige mit der Zahl\n1: (1, 4, 5, 6, 4, 5, 1)\n2: (1, 4, 5, 1)\n3: (2, 4, 5, 1)\n4: (1, 6, 4#, 5, 1)\nEingabe: ")
+	kadenz = input("Wähle eine und bestätige mit der Zahl\n1: (1, 4, 5, 6, 4, 5, 1)\n2: (1, 4, 5, 1)\n3: (2, 4, 5, 1)\n4: (1, 6, 4#, 5, 1)\n5: (i, IIIb, iv, V, i)\nEingabe: ")
 	if kadenz == "1":
 		progression = [['C', 'E', 'G'], ['F', 'A', 'C'], ['G', 'B', 'D'], ['A', 'C', 'E'], ['F', 'A', 'C'], ['G', 'B', 'D', 'F'], ['G', 'E', 'C']]
 	if kadenz == "2":
@@ -20,6 +20,8 @@ if end == "x":
 		progression = [['D', 'F', 'A'], ['F', 'A', 'C'], ['G', 'B', 'D'], ['C', 'E', 'G']]
 	if kadenz == "4":
 		progression = [['C', 'E', 'G'], ['A', 'C', 'E'], ['D', 'F#', 'A'], ['G', 'B', 'D'], ['C', 'E', 'G']]
+	if kadenz == "5":
+		progression = [['A', 'C', 'E'], ['C', 'E', 'G'], ['D', 'F', 'A'], ['E', 'G#', 'B', 'D'], ['A', 'C', 'E']]
 while end == "y":
 	while note != "X":
 		note = input("Input notes (C#/Cb):").capitalize()
@@ -225,7 +227,8 @@ scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
 				("0", "2", "4", "6", "7", "9", "11"): "Lydisch",
 				("0", "1", "3", "5", "7", "8", "10"): "Phrygisch",
 				("0", "2", "3", "5", "7", "9", "10"): "Dorisch",
-				("0", "1", "3", "5", "6", "8", "10"): "Lokrisch"
+				("0", "1", "3", "5", "6", "8", "10"): "Lokrisch",
+				("0", "2", "3", "5", "7", "8", "10", "11"): "Harmonisch/natürlich-Moll"
 }
 # ein dict dass den key und value der skalen vertauscht hat
 scale_dict_swapped = {value: key for key, value in scale_dict.items()}
@@ -253,7 +256,8 @@ scale_structure = {
 				"Lydisch": 			("1", "2", "3", "4#", "5", "6", "7"),
 				"Phrygisch":  		("1", "2b", "3b", "4", "5", "6b", "7b"),
 				"Dorisch":			("1", "2", "3b", "4", "5", "6", "7b"),
-				"Lokrisch":			("1", "2b", "3b", "4", "5b", "6b", "7b")
+				"Lokrisch":			("1", "2b", "3b", "4", "5b", "6b", "7b"),
+				"Harmonisch/natürlich-Moll": ("1", "2", "3b", "4", "5", "6b", "7b", "7")
 }
 
 # root to scale_structure
