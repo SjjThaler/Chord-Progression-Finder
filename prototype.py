@@ -9,6 +9,9 @@ end="y"
 # Input loop to allow:
 # 1. input of multiple musical notes
 # 2. input of several groups of notes
+end= input("mit x: Beispiel Kadenz (1, 4, 5, 6, 4, 5, 1) verwenden?\nmit y: Mach eigene angaben\nEingabe: ")
+if end == "x":
+	progression = [['C', 'E', 'G'], ['F', 'A', 'C'], ['G', 'B', 'D'], ['A', 'C', 'E'], ['F', 'A', 'C'], ['G', 'B', 'D'], ['C', 'E', 'G']]
 while end == "y":
 	while note != "X":
 		note = input("Input notes (C#/Cb):").capitalize()
