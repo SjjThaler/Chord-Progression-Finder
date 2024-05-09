@@ -267,6 +267,60 @@ for i_root, i_scale_name, i_scale, scale_index in root_scale_structure_index:
 	root_step_run = []
 print(f"root-step{root_step}")
 # nun da die stufen bekannt sind ( von allen modes) könnte man mit dem (anstehenden)-update von chord_name bestimmen, ob römisch groß/klein und der dazugehörigen chord analyse
+
+roman_num_dict_dur = {"1": "I",
+				  "2b": "♭II",
+				  "2": "II",
+				  "2#": "♯II",
+				  "3b": "♭III",
+				  "3": "III",
+				  "3#": "♯III",
+				  "4b": "♭IV",
+				  "4": "IV",
+				  "4#": "♯IV",
+				  "5b": "♭V",
+				  "5": "V",
+				  "5#": "♯V",
+				  "6b": "♭VI",
+				  "6": "VI",
+				  "6#": "♯VI",
+				  "7b": "♭VII",
+				  "7": "VII",
+				  "7#": "♯VII"
+				  }
+
+roman_num_dict_moll = {"1": "i",
+				  "2b": "♭ii",
+				  "2": "ii",
+				  "2#": "♯ii",
+				  "3b": "♭iii",
+				  "3": "iii",
+				  "3#": "♯iii",
+				  "4b": "♭iv",
+				  "4": "iv",
+				  "4#": "♯iv",
+				  "5b": "♭v",
+				  "5": "v",
+				  "5#": "♯v",
+				  "6b": "♭vi",
+				  "6": "vi",
+				  "6#": "♯vi",
+				  "7b": "♭vii",
+				  "7": "vii",
+				  "7#": "♯vii"
+				  }
+roman_num = []
+roman_num_run = []
+for i_step in root_step:
+	for i_s, i_ch in zip(i_step[1], chord_names):
+		if i_ch[2] == 0:
+			roman_num_run.append(roman_num_dict_dur[i_s] + i_ch[1])
+		else:
+			roman_num_run.append(roman_num_dict_moll[i_s] + i_ch[1])
+	roman_num.append(roman_num_run)
+	roman_num_run = []
+
+print(f"Roman-num: {roman_num}")
 # vielleicht wäre es nützlich im dictionary dur und moll chords zu vermerken. z.B mit 0 für Dur und 1 für Moll
 
 # Leading tone key estimator
