@@ -107,45 +107,45 @@ for i in range(len(progression_intervalls)):
     # dict value index, if len = 3: 0 = root; -2 = type; -1 = dur/moll indicator
     # dict value index, if len = 4: 0 = root; 1 = bassnote; -2 = type; -1 = dur/moll indicator
 	chord_names_dict = {# Dur
-						("4", "3"): [progression[i][0], "Dur", 0],
-						("7", "9"): [progression[i][0], "Dur", 0],
-						("5", "4"): [progression[i][1], progression[i][0], "Dur", 0],
-						("8", "7"): [progression[i][1], progression[i][0], "Dur", 0],
-						("3", "5"): [progression[i][2], progression[i][0], "Dur", 0],
-						("9", "8"): [progression[i][2], progression[i][0], "Dur", 0],
+						("4", "3"): [progression[i][0], "", 0],
+						("7", "9"): [progression[i][0], "", 0],
+						("5", "4"): [progression[i][1], progression[i][0], "", 0],
+						("8", "7"): [progression[i][1], progression[i][0], "", 0],
+						("3", "5"): [progression[i][2], progression[i][0], "", 0],
+						("9", "8"): [progression[i][2], progression[i][0], "", 0],
 						# Moll
-						("3", "4"): [progression[i][0], "Moll", 1],
-						("5", "3"): [progression[i][1], progression[i][0], "Moll", 1],
-						("9", "7"): [progression[i][1], progression[i][0], "Moll", 1],
-						("4", "5"): [progression[i][2], progression[i][0], "Moll", 1],
-						("8", "9"): [progression[i][2], progression[i][0], "Moll", 1],
-						("7", "8"): [progression[i][0], "Moll", 1],
+						("3", "4"): [progression[i][0], "", 1],
+						("5", "3"): [progression[i][1], progression[i][0], "", 1],
+						("9", "7"): [progression[i][1], progression[i][0], "", 1],
+						("4", "5"): [progression[i][2], progression[i][0], "", 1],
+						("8", "9"): [progression[i][2], progression[i][0], "", 1],
+						("7", "8"): [progression[i][0], "", 1],
 						# Dur Maj-sept
-						("4", "3", "4"): [progression[i][0], "maj7", 0],
-						("4", "7", "8"): [progression[i][0], "maj7", 0],
-						("7", "4", "5"): [progression[i][0], "maj7", 0],
-						("7", "9", "7"): [progression[i][0], "maj7", 0],
-						("11", "5", "3"): [progression[i][0], "maj7", 0],
-						("11", "8", "9"): [progression[i][0], "maj7", 0],
-						("1", "4", "3"): [progression[i][1], progression[i][0], "maj7", 0],
-						("4", "1", "4"): [progression[i][2], progression[i][0], "maj7", 0],
+						("4", "3", "4"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("4", "7", "8"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("7", "4", "5"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("7", "9", "7"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("11", "5", "3"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("11", "8", "9"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("1", "4", "3"): [progression[i][1], progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("4", "1", "4"): [progression[i][2], progression[i][0], "ᵐᵃᶨ⁷", 0],
 						#("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
 						# Moll min-sept
-						("3", "4", "3"): [progression[i][0], "m7", 1],
+						("3", "4", "3"): [progression[i][0], "ᵐ⁷", 1],
 						# Dominant 7th: Dur min-sept
-						("4", "3", "3"): [progression[i][0], "7", 0],
+						("4", "3", "3"): [progression[i][0], "⁷", 0],
 						# Minor major 7th: Moll Maj-sept
-						("3", "4", "4"): [progression[i][0], "maj7", 1],
+						("3", "4", "4"): [progression[i][0], "ᵐᵃᶨ⁷", 1],
 						# Augmented
-						("4", "4"): [progression[i][0], "+", 0],
+						("4", "4"): [progression[i][0], "⁺", 0],
 						# Diminished
 						("3", "3"): [progression[i][0], "°", 1],
 						# Dim-7
-						("3", "3", "4"): [progression[i][0], "m7b5", 1]
+						("3", "3", "4"): [progression[i][0], "ᵐ⁷ᵇ⁵", 1]
 
 						}
 	if len(progression_intervalls[i]) >= 3:
-		chord_names_dict.update({("3", "4", "1"): [progression[i][3], progression[i][0], "maj7", 0]
+		chord_names_dict.update({("3", "4", "1"): [progression[i][3], progression[i][0], "ᵐᵃᶨ⁷", 0]
 
 		})
 	chord_names.append(chord_names_dict[tuple(progression_intervalls[i])])
