@@ -313,10 +313,10 @@ roman_num = []
 roman_num_run = []
 for i_step in root_step:
 	for i_s, i_ch in zip(i_step[1], chord_names):
-		if i_ch[2] == 0:
-			roman_num_run.append(roman_num_dict_dur[i_s] + i_ch[1])
+		if i_ch[-1] == 0:
+			roman_num_run.append(roman_num_dict_dur[i_s] + i_ch[-2])
 		else:
-			roman_num_run.append(roman_num_dict_moll[i_s] + i_ch[1])
+			roman_num_run.append(roman_num_dict_moll[i_s] + i_ch[-2])
 	roman_num.append(roman_num_run)
 	roman_num_run = []
 
