@@ -104,45 +104,50 @@ print(progression_intervalls)
 # da für die stufen bestimmung ob römisch groß/klein, sollte dur und moll vermerkt werden. z.B mit 0 und 1
 chord_names = []
 for i in range(len(progression_intervalls)):
-	chord_names_dict = {("4", "3"): f"{progression[i][0]} Dur",
-						("7", "9"): f"{progression[i][0]} Dur",
-						("5", "4"): f"{progression[i][1]}/{progression[i][0]} Dur",
-						("8", "7"): f"{progression[i][1]}/{progression[i][0]} Dur",
-						("3", "5"): f"{progression[i][2]}/{progression[i][0]} Dur",
-						("9", "8"): f"{progression[i][2]}/{progression[i][0]} Dur",
+    # dict value index, if len = 3: 0 = root; -2 = type; -1 = dur/moll indicator
+    # dict value index, if len = 4: 0 = root; 1 = bassnote; -2 = type; -1 = dur/moll indicator
+	chord_names_dict = {# Dur
+						("4", "3"): [progression[i][0], "", 0],
+						("7", "9"): [progression[i][0], "", 0],
+						("5", "4"): [progression[i][1], progression[i][0], "", 0],
+						("8", "7"): [progression[i][1], progression[i][0], "", 0],
+						("3", "5"): [progression[i][2], progression[i][0], "", 0],
+						("9", "8"): [progression[i][2], progression[i][0], "", 0],
 						# Moll
-						("3", "4"): f"{progression[i][0]} Moll",
-						("5", "3"): f"{progression[i][1]}/{progression[i][0]} Moll",
-						("9", "7"): f"{progression[i][1]}/{progression[i][0]} Moll",
-						("4", "5"): f"{progression[i][2]}/{progression[i][0]} Moll",
-						("8", "9"): f"{progression[i][2]}/{progression[i][0]} Moll",
-						("7", "8"): f"{progression[i][0]} Moll",
+						("3", "4"): [progression[i][0], "", 1],
+						("5", "3"): [progression[i][1], progression[i][0], "", 1],
+						("9", "7"): [progression[i][1], progression[i][0], "", 1],
+						("4", "5"): [progression[i][2], progression[i][0], "", 1],
+						("8", "9"): [progression[i][2], progression[i][0], "", 1],
+						("7", "8"): [progression[i][0], "", 1],
 						# Dur Maj-sept
-						("4", "3", "4"): f"{progression[i][0]}maj7",
-						("4", "7", "8"): f"{progression[i][0]}maj7",
-						("7", "4", "5"): f"{progression[i][0]}maj7",
-						("7", "9", "7"): f"{progression[i][0]}maj7",
-						("11", "5", "3"): f"{progression[i][0]}maj7",
-						("11", "8", "9"): f"{progression[i][0]}maj7",
-						("1", "4", "3"): f"{progression[i][1]}/{progression[i][0]}maj7",
-						("4", "1", "4"): f"{progression[i][2]}/{progression[i][0]}maj7",
+						("4", "3", "4"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("4", "7", "8"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("7", "4", "5"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("7", "9", "7"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("11", "5", "3"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("11", "8", "9"): [progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("1", "4", "3"): [progression[i][1], progression[i][0], "ᵐᵃᶨ⁷", 0],
+						("4", "1", "4"): [progression[i][2], progression[i][0], "ᵐᵃᶨ⁷", 0],
 						#("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7",
-						# Moll sept
-						("3", "4", "3"): f"{progression[i][0]}m7",
-						# Dominant 7th
-						("4", "3", "3"): f"{progression[i][0]}7",
-						# Minor major 7th
-						("3", "4", "4"): f"{progression[i][0]}minmaj7",
+						# Moll min-sept
+						("3", "4", "3"): [progression[i][0], "ᵐ⁷", 1],
+						# Dominant 7th: Dur min-sept
+						("4", "3", "3"): [progression[i][0], "⁷", 0],
+						# Minor major 7th: Moll Maj-sept
+						("3", "4", "4"): [progression[i][0], "ᵐᵃᶨ⁷", 1],
 						# Augmented
-						("4", "4"): f"{progression[i][0]}aug",
+						("4", "4"): [progression[i][0], "⁺", 0],
 						# Diminished
-						("3", "3"): f"{progression[i][0]}dim",
+						("3", "3"): [progression[i][0], "°", 1],
 						# Dim-7
-						("3", "3", "4"): f"{progression[i][0]}7b5"
+						("3", "3", "4"): [progression[i][0], "ᵐ⁷ᵇ⁵", 1]
 
 						}
 	if len(progression_intervalls[i]) >= 3:
-		chord_names_dict.update({("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7"})
+		chord_names_dict.update({("3", "4", "1"): [progression[i][3], progression[i][0], "ᵐᵃᶨ⁷", 0]
+
+		})
 	chord_names.append(chord_names_dict[tuple(progression_intervalls[i])])
 # dann kann man mit, z.B. den intervallen (4, 3), chord_names[n][0] die root-note, und mit chord_names[n][-1] die art bestimmen, in dem Beispiel Dur
 # und man kann dann leichter die bassnote im stufen system bestimmen.
@@ -152,62 +157,15 @@ for i in range(len(progression_intervalls)):
 
 print(f"Chord names {chord_names}")
 
-# identify chord-root-note
-chord_root = []
-for i in range(len(progression_intervalls)):
-	chord_root_dict = {	("4", "3"): f"{progression[i][0]}",
-					   	("7", "9"): f"{progression[i][0]}",
-						("5", "4"): f"{progression[i][1]}",
-						("8", "7"): f"{progression[i][1]}",
-						("3", "5"): f"{progression[i][2]}",
-						("9", "8"): f"{progression[i][2]}",
-						# Moll
-						("3", "4"): f"{progression[i][0]}",
-						("5", "3"): f"{progression[i][1]}",
-						("9", "7"): f"{progression[i][1]}",
-						("4", "5"): f"{progression[i][2]}",
-						("8", "9"): f"{progression[i][2]}",
-						("7", "8"): f"{progression[i][0]}",
-						# Dur Maj-sept
-						("4", "3", "4"): f"{progression[i][0]}",
-						("4", "7", "8"): f"{progression[i][0]}",
-						("7", "4", "5"): f"{progression[i][0]}",
-						("7", "9", "7"): f"{progression[i][0]}",
-						("11", "5", "3"): f"{progression[i][0]}",
-						("11", "8", "9"): f"{progression[i][0]}",
-						("1", "4", "3"): f"{progression[i][1]}",
-						("4", "1", "4"): f"{progression[i][2]}",
-						#("3", "4", "1"): f"{progression[i][3]}",
-						# Moll sept
-						("3", "4", "3"): f"{progression[i][0]}",
-						# Dominant 7th
-						("4","3","3"):f"{progression[i][0]}",
-						# Minor major 7th
-						("3","4","4"):f"{progression[i][0]}",
-						# Augmented
-						("4","4"):f"{progression[i][0]}",
-						# Diminished
-						("3","3"):f"{progression[i][0]}",
-						#Dim-m7
-						("3", "3", "4"): f"{progression[i][0]}"
-
-
-
-	}
-	if len(progression_intervalls[i]) >= 3:
-		chord_root_dict.update({("3", "4", "1"): f"{progression[i][3]}"})
-	chord_root.append(chord_root_dict[tuple(progression_intervalls[i])])
-
-print(f"Chord root {chord_root}")
 
 # scale estimator
 all_notes = [item for sublist in progression for item in sublist] # fasst alle Noten der Akkorde in eine Liste
 print(f"All Notes: {all_notes}")
 scale = []
 all_scale = []
-for i_root in chord_root: # i_root ist die root-note der eingegebenen Akkorde
+for i_root in chord_names: # i_root ist die root-note der eingegebenen Akkorde
 	for i_all in all_notes: # i_all sind alle gegebenen Noten
-		scale.append(str(intervall(i_root, i_all))) # fügt das intervall von einer root-note zu allen gegebenen hinzu
+		scale.append(str(intervall(i_root[0], i_all))) # fügt das intervall von einer root-note zu allen gegebenen hinzu
 	uni_scale = list(map(int, list(set(scale)))) # nachdem alle intervall in scale = [] gespeichert wurden, filtert es mit einem set alle mehrfachen raus, wandelt alle intervalle mit map in int um, um sie zu ordnen
 	uni_scale.sort() # hier wird geordnet
 	all_scale.append(list(map(str, uni_scale))) # hier wird wieder alles in str umgewandelt und die skala(aus intervallen) einer liste zugefügt
@@ -219,26 +177,28 @@ print(f"All Scales. {all_scale}")
 # man könnte in scale_dict auch die scale_strukture (stufen) einfügen.
 # man erspart sich ein zweites dict und im folgenden code einige zeilen. ACHTUNG! dabei müsste man viel umschreiben.
 # das dict sähe dann so aus: ("0", "2", "4", "5", "7", "9", "11"): ["Ionisch", ["1", "2", "3", "4", "5", "6", "7"]]
-scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): "Ionisch",
-				("0", "2", "3", "5", "7", "8", "10"): "Aeolisch",
-				("0", "2", "3", "5", "7", "8", "11"): "Harmonisch-Moll",
-				("0", "2", "4", "5", "7", "9", "10"): "Mixolydisch",
-				("0", "2", "3", "6", "7", "8", "11"): "Zigeuner-Moll",
-				("0", "2", "4", "6", "7", "9", "11"): "Lydisch",
-				("0", "1", "3", "5", "7", "8", "10"): "Phrygisch",
-				("0", "2", "3", "5", "7", "9", "10"): "Dorisch",
-				("0", "1", "3", "5", "6", "8", "10"): "Lokrisch",
-				("0", "2", "3", "5", "7", "8", "10", "11"): "Harmonisch/natürlich-Moll"
+scale_dict = {	("0", "2", "4", "5", "7", "9", "11"): ["Ionisch", ("1", "2", "3", "4", "5", "6", "7")],
+				("0", "2", "3", "5", "7", "8", "10"): ["Aeolisch", ("1", "2", "3b", "4", "5", "6b", "7b")],
+				("0", "2", "3", "5", "7", "8", "11"): ["Harmonisch-Moll", ("1", "2", "3b", "4", "5", "6b", "7")],
+				("0", "2", "4", "5", "7", "9", "10"): ["Mixolydisch", ("1", "2", "3", "4", "5", "6", "7b")],
+				("0", "2", "3", "6", "7", "8", "11"): ["Zigeuner-Moll", ("1", "2", "3b", "4#", "5", "6b", "7")],
+				("0", "2", "4", "6", "7", "9", "11"): ["Lydisch", ("1", "2", "3", "4#", "5", "6", "7")],
+				("0", "1", "3", "5", "7", "8", "10"): ["Phrygisch", ("1", "2b", "3b", "4", "5", "6b", "7b")],
+				("0", "2", "3", "5", "7", "9", "10"): ["Dorisch", ("1", "2", "3b", "4", "5", "6", "7b")],
+				("0", "1", "3", "5", "6", "8", "10"): ["Lokrisch", ("1", "2b", "3b", "4", "5b", "6b", "7b")],
+				("0", "2", "3", "5", "7", "8", "10", "11"): ["Harmonisch/natürlich-Moll", ("1", "2", "3b", "4", "5", "6b", "7b", "7")]
+
 }
-# ein dict dass den key und value der skalen vertauscht hat
-scale_dict_swapped = {value: key for key, value in scale_dict.items()}
+# ein dict dass den key und einen value der skalen vertauscht hat
+scale_dict_swapped = {value[1]: key for key, value in scale_dict.items()}
+#scale_dict_swapped = {value: key for key, value in scale_dict.items()}
 # nach der anpussung des scale_dict wäre scale_dict_swapped nicht mehr nötig
 
 scale_name = []
 for i_index, i_scale in enumerate(all_scale):
 	for key, value in scale_dict.items(): # hier wird durch das obige scale dict mit .items() mit den jeweiligen key und value iteriert
 		if all(i in key for i in i_scale): # all() gibt True, wenn alle booleans darin True sind. i sind hier die ermittelten intervalle des scale estimators. dann wird überprüft ob i in dem key (der intervall-struktur der modis) is und gibt einen bool aus.
-			scale_name.append([chord_root[i_index], value]) # wenn alle gegebenen intervalle in einem modus auch vorkommen ...
+			scale_name.append([chord_names[i_index][0], value[0], value[1]]) # wenn alle gegebenen intervalle in einem modus auch vorkommen ...
 # nach der anpassung wäre in diesem fall value[0] der skale-name
 # und value[1], die stufen sollte man vielleicht mitnehmen
 
@@ -247,30 +207,18 @@ print(f"Scale name: {scale_name}")
 # scale struktur
 # hier könnte man statt zahlen die römischen ziffern ersetzen.
 # andererseits könnte man die römisch groß/klein schreibweise (dur/moll) abhänig von der chord analyse bestimmen. die variante lässt mehr spielraum für modulationen
-scale_structure = {
-				"Ionisch": 			("1", "2", "3", "4", "5", "6", "7"),
-				"Aeolisch": 		("1", "2", "3b", "4", "5", "6b", "7b"),
-				"Harmonisch-Moll": 	("1", "2", "3b", "4", "5", "6b", "7"),
-				"Mixolydisch": 		("1", "2", "3", "4", "5", "6", "7b"),
-				"Zigeuner-Moll": 	("1", "2", "3b", "4#", "5", "6b", "7"),
-				"Lydisch": 			("1", "2", "3", "4#", "5", "6", "7"),
-				"Phrygisch":  		("1", "2b", "3b", "4", "5", "6b", "7b"),
-				"Dorisch":			("1", "2", "3b", "4", "5", "6", "7b"),
-				"Lokrisch":			("1", "2b", "3b", "4", "5b", "6b", "7b"),
-				"Harmonisch/natürlich-Moll": ("1", "2", "3b", "4", "5", "6b", "7b", "7")
-}
 
 # root to scale_structure
-root_scale_structure = [[i_root, scale_structure[scale]]for i_root, scale in scale_name]
-print(f"Root-Scale-Structure: {root_scale_structure}")
+#root_scale_structure = [[i_root, scale_structure[scale]]for i_root, scale in scale_name]
+#print(f"Root-Scale-Structure: {root_scale_structure}")
 # nach der dict-anpassung sollte sich hier nichts verändern
 
 # erzeugt die intervalle zwischen allen chord-root-notes
 chord_root_to_root_run = []
 chord_root_to_root = []
-for i_chord_root in chord_root:
-	for i_chord in chord_root:
-		chord_root_to_root_run.append(str(intervall(i_chord_root, i_chord)))
+for i_chord_root in chord_names:
+	for i_chord in chord_names:
+		chord_root_to_root_run.append(str(intervall(i_chord_root[0], i_chord[0])))
 	chord_root_to_root.append(chord_root_to_root_run)
 	chord_root_to_root_run = []
 print(f"chord-root-to-root: {chord_root_to_root}")
@@ -286,10 +234,10 @@ print(f"chord-root-to-root: {chord_root_to_root}")
 scale_index_run = []
 scale_index = []
 for i_scale in scale_name:  # scale_name besitzt die root-notes (index 0) und die möglichen Skalen (index 1) dazu.
-	for i_root, i_root_to_root in zip(chord_root, chord_root_to_root): # zip verbindet die root-notes mit den intervallen zwischen den root-notes
-		if i_root == i_scale[0]: # wenn die root-note der chords mit der root-note der möglichen Skalen übereinstimmt...
+	for i_root, i_root_to_root in zip(chord_names, chord_root_to_root): # zip verbindet die root-notes mit den intervallen zwischen den root-notes
+		if i_root[0] == i_scale[0]: # wenn die root-note der chords mit der root-note der möglichen Skalen übereinstimmt...
 			for i_root_to_root_run in i_root_to_root: # ...wird für jedes intervall (chord-root-notes untereinander) der index in der jeweiligen Skala vermerkt
-				scale_index_run.append(scale_dict_swapped[i_scale[1]].index(i_root_to_root_run)) # i_scale[1] is der name der Skala und scale_dict_swapped hat den key (name der skala) und den value (struktur des modus)
+				scale_index_run.append(scale_dict_swapped[i_scale[2]].index(i_root_to_root_run)) # i_scale[1] is der name der Skala und scale_dict_swapped hat den key (name der skala) und den value (struktur des modus)
 			scale_index.append(scale_index_run)
 			scale_index_run = []
 			break # wird benötigt damit die chord-root-notes nur einmal hinzugefügt werden, wenn die richtige note gefunden wurde
@@ -303,7 +251,8 @@ print(f"scale index: {scale_index}")
 
 # verbindet die liste der root+modi mit dem index, um im nächsten schritt alle drei in einer for-loop schleife zu haben.
 root_scale_structure_index = []
-for i_index, i_root_scale in enumerate(root_scale_structure):
+root_scale_structure_index_run = []
+for i_index, i_root_scale in enumerate(scale_name):
 	i_root_scale.append(scale_index[i_index])
 	root_scale_structure_index.append(i_root_scale)
 print(f"Root_scale_Index: {root_scale_structure_index}")
@@ -311,13 +260,67 @@ print(f"Root_scale_Index: {root_scale_structure_index}")
 # erzeugt die Stufen der jeweiligen modi+root
 root_step_run = []
 root_step = []
-for i_root, i_scale, scale_index in root_scale_structure_index:
+for i_root, i_scale_name, i_scale, scale_index in root_scale_structure_index:
 	for i in scale_index:
 		root_step_run.append(i_scale[i])
 	root_step.append([i_root, root_step_run])
 	root_step_run = []
 print(f"root-step{root_step}")
 # nun da die stufen bekannt sind ( von allen modes) könnte man mit dem (anstehenden)-update von chord_name bestimmen, ob römisch groß/klein und der dazugehörigen chord analyse
+
+roman_num_dict_dur = {"1": "I",
+				  "2b": "♭II",
+				  "2": "II",
+				  "2#": "♯II",
+				  "3b": "♭III",
+				  "3": "III",
+				  "3#": "♯III",
+				  "4b": "♭IV",
+				  "4": "IV",
+				  "4#": "♯IV",
+				  "5b": "♭V",
+				  "5": "V",
+				  "5#": "♯V",
+				  "6b": "♭VI",
+				  "6": "VI",
+				  "6#": "♯VI",
+				  "7b": "♭VII",
+				  "7": "VII",
+				  "7#": "♯VII"
+				  }
+
+roman_num_dict_moll = {"1": "i",
+				  "2b": "♭ii",
+				  "2": "ii",
+				  "2#": "♯ii",
+				  "3b": "♭iii",
+				  "3": "iii",
+				  "3#": "♯iii",
+				  "4b": "♭iv",
+				  "4": "iv",
+				  "4#": "♯iv",
+				  "5b": "♭v",
+				  "5": "v",
+				  "5#": "♯v",
+				  "6b": "♭vi",
+				  "6": "vi",
+				  "6#": "♯vi",
+				  "7b": "♭vii",
+				  "7": "vii",
+				  "7#": "♯vii"
+				  }
+roman_num = []
+roman_num_run = []
+for i_step in root_step:
+	for i_s, i_ch in zip(i_step[1], chord_names):
+		if i_ch[-1] == 0:
+			roman_num_run.append(roman_num_dict_dur[i_s] + i_ch[-2])
+		else:
+			roman_num_run.append(roman_num_dict_moll[i_s] + i_ch[-2])
+	roman_num.append(roman_num_run)
+	roman_num_run = []
+
+print(f"Roman-num: {roman_num}")
 # vielleicht wäre es nützlich im dictionary dur und moll chords zu vermerken. z.B mit 0 für Dur und 1 für Moll
 
 # Leading tone key estimator
@@ -360,12 +363,12 @@ if len(sharp) >= 1 or len(flat) >= 1:
 print(keylist)
 
 if len(keylist) >= 1:
-	if (keylist== chord_root[-1]):
-		print(f"Leadtone and chord root indicate the key of: {chord_root[-1]}") # Das funktioniert noch nicht, weil chord root immer nur eine einzelne Note ist
+	if (keylist== chord_names[-1][0]):
+		print(f"Leadtone and chord root indicate the key of: {chord_names[-1][0]}") # Das funktioniert noch nicht, weil chord root immer nur eine einzelne Note ist
 	else:
-		print(f"Chord root indicates key of: {chord_root[-1]}")
+		print(f"Chord root indicates key of: {chord_names[-1][0]}")
 else:
-	print(f"Chord root indicates key of: {chord_root[-1]}")
+	print(f"Chord root indicates key of: {chord_names[-1][0]}")
 
 
 # Stufen estimator => I-IV-I
