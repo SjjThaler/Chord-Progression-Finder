@@ -35,19 +35,6 @@ while end == "y":
 
 print(f"Progression {progression}")
 
-# Unique sharp counter
-sharp = set()
-flat = set()
-for i_sublist in progression:
-	for i in i_sublist:
-		if "#" in i:
-			sharp.add(i)
-		if "b" in i:
-			flat.add(i)
-
-# Analytic sharp counter? Not yet coded...
-
-
 # Intervall calculation method
 def intervall (n1, n2):
     notdict = {
@@ -144,9 +131,9 @@ for i in range(len(progression_intervalls)):
 	if len(progression_intervalls[i]) >= 3:
 		chord_names_dict.update({("3", "4", "1"): f"{progression[i][3]}/{progression[i][0]}maj7"})
 	chord_names.append(chord_names_dict[tuple(progression_intervalls[i])])
-# dann kann man mit, z.B. den intervallen (4, 3), chord_names[n][0] die root-note, und mit chord_names[n][-1] die art bestimmen, in dem Beispiel Dur
+# dann kann man mit, z.B. den intervallen (4, 3), chord_data[n][0] die root-note, und mit chord_data[n][-1] die art bestimmen, in dem Beispiel Dur
 # und man kann dann leichter die bassnote im stufen system bestimmen.
-# jeder chord in chord_names besteht dann aus einer liste mit 2, oder bei inversionen mit 3 elementen.
+# jeder chord in chord_data besteht dann aus einer liste mit 2, oder bei inversionen mit 3 elementen.
 # die anpassung sollte eigentlich leicht gehen. statt einem f-string ein tuple
 # und wir müssen uns noch auf eine schreibweise der chords einigen/recherchieren.
 
@@ -320,54 +307,6 @@ print(f"root-step{root_step}")
 # nun da die stufen bekannt sind ( von allen modes) könnte man mit dem (anstehenden)-update von chord_name bestimmen, ob römisch groß/klein und der dazugehörigen chord analyse
 # vielleicht wäre es nützlich im dictionary dur und moll chords zu vermerken. z.B mit 0 für Dur und 1 für Moll
 
-# Leading tone key estimator
-
-sharpcircle = ["F#", "C#", "G#", "D#", "A#", "E#", "B#"]
-flatcircle = ["Bb", "Eb", "Ab", "Db", "Gb", "Cb", "Fb"]
-keylist = []
-
-def leadest():
-	if len(sharp) > len(flat):
-		for i in sharpcircle:
-			if i in sharp:
-				keylist.append(i)
-	else:
-		for i in flatcircle:
-			if i in flat:
-				keylist.append(i)
-
-	keydict = {
-		"F#": "G-Dur",
-		"C#": "D-Dur",
-		"G#": "A-Dur",
-		"D#": "E-Dur",
-		"A#": "B-Dur",
-		"E#": "F#-Dur",
-		"B#": "C#-Dur",
-		"Bb": "F-Dur",
-		"Eb": "Bb-Dur",
-		"Ab": "Eb-Dur",
-		"Db": "Ab-Dur",
-		"Gb": "Db-Dur",
-		"Cb": "Gb-Dur",
-		"Fb": "Cb-Dur",
-	}
-	return keydict[keylist[-1]]
-
-if len(sharp) >= 1 or len(flat) >= 1:
-	keylist = leadest()
-
-print(keylist)
-
-if len(keylist) >= 1:
-	if (keylist== chord_root[-1]):
-		print(f"Leadtone and chord root indicate the key of: {chord_root[-1]}") # Das funktioniert noch nicht, weil chord root immer nur eine einzelne Note ist
-	else:
-		print(f"Chord root indicates key of: {chord_root[-1]}")
-else:
-	print(f"Chord root indicates key of: {chord_root[-1]}")
 
 
-# Stufen estimator => I-IV-I
-# if 1ster Akkord von 2ten Akkord 4 drüber, dann ?
-# alle modis überprüfen ob der modi dem letzten akkord entspricht
+
