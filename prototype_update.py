@@ -321,7 +321,37 @@ for i_step in root_step:
 	roman_num_run = []
 
 print(f"Roman-num: {roman_num}")
-# vielleicht wäre es nützlich im dictionary dur und moll chords zu vermerken. z.B mit 0 für Dur und 1 für Moll
+# dict Funktionslehre
+# root-intervall, type(?), moll/dur = funktion
+function_dict = {["7", "⁷", 0]: "D",
+				 ["7", "", 0]: "D",
+				 ["11", "ᵐ⁷ᵇ⁵", 1]: "d",
+				 ["11", "°", 1]: "d",
+				 ["1"]: "3t-D",
+				 ["0", "", 0]: "T",
+				 ["4", "", 1]: "t",
+				 ["9", "", 1]: "t",
+				 ["5", "", 0]: "SD",
+				 ["2", "", 1]: "sd",
+				 ["8"]: "3t-sd"
+
+
+}
+#for loop zu jedem root-chord ....
+# ... while (schrit für schritt) funct_dict-patterns gefunden werden
+# falls nicht = modulation
+#---------
+# neue idee/Ansatz: nach dem die root-note/chords bestimmt wurden...
+# intervalle zu allen roots herstellen und in stufen übersetzen, so das c-d-g-des-c = 1,2,5,b2,1 ergibt.
+# dann den abschnitt festlegen bis es abweichungen/keine übereinstimmung im scale_dict gibt.
+# 		... also es werden schritt für schritt die noten der akkorde hinzugefügt und auf übereinstimmung geprüft...
+# 		z.B. root (C), chord-notes (c-e-g), c-e-g prüfen,
+# 		nächste root (G), chord-notes (g-b-d), c-e-g-b-d prüfen.
+# dann nach I-V, ii-V-I etc. patterns suchen,
+# dann die häufigkeit der I-IV-V patterns zählen und die key-root für diesen abschnitt bestimmen
+# wenn im zweiten abschnitt die key-root bestimmt oder nicht gefunden wurde, die letzten chords im ersten abschnitt auf patterns prüfen...
+#		... um die genau position der modulation festzustellen.
+
 
 # Leading tone key estimator
 
